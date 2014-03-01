@@ -10,6 +10,10 @@ A simple app for root users to manage CPU parameters and other stuff.
 Third party libraries:
 
 * [SlidingMenu by jfeinstein10] (https://github.com/jfeinstein10/slidingmenu)
+* android-support-v4
+* renderscript-v8
+* root-tools-3.3
+* google analytics
 
 ---
 
