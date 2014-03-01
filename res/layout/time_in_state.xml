@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/speed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:gravity="center_horizontal"
+            android:orientation="vertical" >
+
+            <TextView
+                style="?android:attr/listSeparatorTextViewStyle"
+                android:fontFamily="sans-serif-condensed"
+                android:text="@string/cpu_info_list_header"
+                android:textColor="@android:color/holo_blue_dark" />
+
+            <ListView
+                android:id="@+id/cpu_info_list"
+                android:layout_width="match_parent"
+                android:layout_height="110dp"
+                android:divider="@null"
+                android:paddingLeft="10dp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/ui_header_total_state_time"
+            style="?android:attr/listSeparatorTextViewStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-condensed"
+            android:text="@string/total_state_time"
+            android:textColor="@android:color/holo_blue_dark" />
+
+        <TextView
+            android:id="@+id/ui_total_state_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-condensed"
+            android:gravity="center_horizontal"
+            android:padding="7dp"
+            android:textColor="@android:color/holo_orange_dark"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/ui_header_additional_states"
+            style="?android:attr/listSeparatorTextViewStyle"
+            android:fontFamily="sans-serif-condensed"
+            android:text="@string/unused_cpu_states"
+            android:textColor="@android:color/holo_blue_dark"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/ui_additional_states"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="6dp"
+            android:visibility="gone" />
+
+        <TextView
+            style="?android:attr/listSeparatorTextViewStyle"
+            android:fontFamily="sans-serif-condensed"
+            android:text="@string/time_in_state"
+            android:textColor="@android:color/holo_blue_dark" />
+
+        <LinearLayout
+            android:id="@+id/ui_states_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="10dp" />
+
+        <TextView
+            android:id="@+id/ui_states_warning"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#551111"
+            android:fontFamily="sans-serif-condensed"
+            android:padding="15dp"
+            android:text="@string/no_states_file_found"
+            android:textColor="@android:color/holo_blue_dark"
+            android:textSize="20sp"
+            android:visibility="gone" />
+    </LinearLayout>
+
+</ScrollView>

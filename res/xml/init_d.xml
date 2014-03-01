@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory android:title="@string/pt_general" >
+        <CheckBoxPreference
+            android:key="zipalign_apks"
+            android:summary="@string/ps_zipalign_apks"
+            android:title="@string/pt_zipalign_apks" />
+        <CheckBoxPreference
+            android:key="fix_permissions"
+            android:summary="@string/ps_fix_permissions"
+            android:title="@string/pt_fix_permissions" />
+        <CheckBoxPreference
+            android:key="clear_data_cache"
+            android:summary="@string/ps_clear_data_cache"
+            android:title="@string/pt_clear_data_cache" />
+        <CheckBoxPreference
+            android:key="enable_cron"
+            android:summary="@string/ps_enable_cron"
+            android:title="@string/pt_enable_cron" />
+        <CheckBoxPreference
+            android:key="file_system_speedups"
+            android:summary="@string/ps_tweaks"
+            android:title="@string/pt_tweaks" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

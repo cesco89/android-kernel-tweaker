@@ -1,0 +1,16 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+        <Preference android:key="key_dsht"/>
+        <PreferenceCategory android:title="Developers">
+            <Preference android:key="key_cesco" android:title="Francesco Rigamonti" android:summary="Java code"/>
+            <Preference android:key="key_sollyx" android:title="Enrico Solazzo" android:summary="Graphics"/>
+        </PreferenceCategory>
+        <PreferenceCategory android:title="Open Source Projects">
+            <Preference android:summary="Some classes and xmls are based on the open source projects listed below."/>
+            <Preference android:key="key_aokp" android:title="AOKP"/>
+            <Preference android:key="key_omni" android:title="OMNI"/>
+            <Preference android:key="key_du" android:title="Dirty Unicorns"/>
+        </PreferenceCategory>
+        <PreferenceCategory android:title="Open Source Libraries">
+            <Preference android:key="key_slidingmenu" android:title="SlidingMenu" android:summary="Author: jfeinstein10"/>
+        </PreferenceCategory>
+    </PreferenceScreen>

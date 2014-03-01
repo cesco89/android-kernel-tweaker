@@ -1,0 +1,160 @@
+#
+#
+sysrw() {
+busybox mount -o remount,rw /system
+}
+sysro() {
+busybox mount -o remount,ro /system
+}
+
+get_runtime() {
+starttime=$1
+stoptime=$2
+runtime=`busybox expr $stoptime - $starttime`
+hours=`busybox expr $runtime / 3600`
+remainder=`busybox expr $runtime % 3600`
+mins=`busybox expr $remainder / 60`
+secs=`busybox expr $remainder % 60`
+busybox printf "%02d:%02d:%02d\n" "$hours" "$mins" "$secs"
+}
+
+fp_print(){
+   MSG="$*";
+   if [ $LOGGING -eq 1 ]; then
+    busybox echo "$MSG" >> $LOG_FILE;
+   fi
+}
+
+set_package_permission() {
+	packagename=$1
+	apk_path=$2
+	packageuid=`busybox grep $apk_path /data/system/packages.xml | busybox sed 's%.*serId="\(.*\)".*%\1%' |  busybox cut -d '"' -f1 `
+	data_path=/data/data/$packagename
+
+	if busybox [ -e $apk_path ]; then
+
+		appdir=`busybox dirname $apk_path `
+
+		if busybox [ $appdir == /system/app ]; then
+			busybox chown 0 $apk_path
+			busybox chown :0 $apk_path
+			busybox chmod 644 $apk_path
+			fp_print "${apk_path}:0:0:rw-r--r--";
+
+		elif busybox [ $appdir == /data/app ]; then
+			busybox chown 1000 $apk_path
+			busybox chown :1000 $apk_path
+			busybox chmod 644 $apk_path
+			fp_print "${apk_path}:1000:1000:rw-r--r--";
+
+		elif busybox [ $appdir == /sd-ext/app ]; then
+			busybox chown 1000 $apk_path
+			busybox chown :1000 $apk_path
+			busybox chmod 644 $apk_path
+			fp_print "${apk_path}:1000:1000:rw-r--r--";
+
+		elif busybox [ $appdir == /data/app-private ]; then
+			busybox chown 1000 $apk_path
+			busybox chown :$packageuid $apk_path
+			busybox chmod 640 $apk_path
+			fp_print "${apk_path}:1000:${packageuid}:rw-r-----";
+
+		elif busybox [ $appdir == /sd-ext/app-private ]; then
+			busybox chown 1000 $apk_path
+			busybox chown :$packageuid $apk_path
+			busybox chmod 640 $apk_path
+			fp_print "${apk_path}:1000:${packageuid}:rw-r-----";
+		fi
+
+		if busybox [ -d $data_path ]; then
+
+			busybox chmod 755 $data_path
+			busybox chown $packageuid $data_path
+			busybox chown :$packageuid $data_path
+            fp_print "${data_path}:${packageuid}:${packageuid}:rwxr-xr-x";
+			dirs=`busybox find $data_path -mindepth 1 -type d `
+
+			for file in $dirs; do
+				perm=755
+				newuid=$packageuid
+				newgid=$packageuid
+				fname=`busybox basename $file `
+				case $fname in
+					lib)
+						busybox chmod 755 $file
+						newuid=1000
+						newgid=1000
+						perm=755
+					;;
+					shared_prefs)
+						busybox chmod 771 $file
+						perm=660
+					;;
+					databases)
+						busybox chmod 771 $file
+						perm=660
+					;;
+					cache)
+						busybox chmod 771 $file
+						perm=600
+					;;
+					*)
+						busybox chmod 771 $file
+						perm=771
+					;;
+				esac
+
+				busybox chown $newuid $file
+				busybox chown :$newgid $file
+
+				busybox find $file -type f -maxdepth 1 ! -perm $perm -exec busybox chmod $perm {} ';'
+				busybox find $file -type f -maxdepth 1 ! -user $newuid -exec busybox chown $newuid {} ';'
+				busybox find $file -type f -maxdepth 1 ! -group $newgid -exec busybox chown :$newgid {} ';'
+
+			done
+		fi
+	fi
+}
+
+fp_all() {
+	starttime=`busybox date +%s `
+	packages=`pm list packages -f | busybox cut -d: -f2 `
+
+	fp_print "Fixing permissions start at $FPSTART";
+
+	sysrw
+
+	for package in $packages; do
+		packagename=`echo $package | busybox cut -d '=' -f2 `
+		apk_path=`echo $package | busybox cut -d '=' -f1 `
+		set_package_permission $packagename $apk_path
+	done
+
+	sysro
+	sync
+
+	stoptime=`busybox date +%s `
+	runtime=`get_runtime $starttime $stoptime `
+
+	fp_print "Fix permissions complete! Runtime: ${runtime}";
+
+}
+FPSTART=$( busybox date +"%m-%d-%Y %H:%M:%S" );
+SD=`busybox mount | busybox egrep -v "asec|android_secure|external_sd|sdcard1" | busybox egrep -i "(sdcard|sdcard0)" | busybox awk '{print $3}'`;
+if [ "$SD" == "" ]; then
+      LOG_FILE="/data/fix_permissions.log"
+else
+      LOG_FILE="$SD/fix_permissions.log"
+fi
+busybox rm -f "$LOG_FILE";
+
+arg=$1;
+if [ "$arg" == "-l" ]; then
+    LOGGING=1;
+else
+    LOGGING=0;
+fi;
+if [ $LOGGING -eq 1 ]; then
+   busybox touch "$LOG_FILE";
+fi
+fp_all;

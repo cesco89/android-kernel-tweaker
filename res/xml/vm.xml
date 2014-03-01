@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:key="key_root"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <PreferenceCategory
+        android:key="vm_settings"
+        android:title="@string/prefcat_vm_settings">
+
+        <com.dsht.kerneltweaker.CustomPreference
+            android:key="pref_dirty_ratio"
+            android:title="@string/dirty_ratio_title" />
+
+        <com.dsht.kerneltweaker.CustomPreference
+            android:key="pref_dirty_background"
+            android:title="@string/dirty_background_title" />
+
+        <com.dsht.kerneltweaker.CustomPreference
+            android:key="pref_dirty_expire"
+            android:title="@string/dirty_expire_title" />
+
+        <com.dsht.kerneltweaker.CustomPreference
+            android:key="pref_dirty_writeback"
+            android:title="@string/dirty_writeback_title" />
+
+        <com.dsht.kerneltweaker.CustomPreference
+            android:key="pref_min_free_kb"
+            android:title="@string/min_free_title" />
+
+        <com.dsht.kerneltweaker.CustomPreference
+            android:key="pref_overcommit"
+            android:title="@string/overcommit_title" />
+
+        <com.dsht.kerneltweaker.CustomPreference
+            android:key="pref_swappiness"
+            android:title="@string/swappiness_title" />
+
+        <com.dsht.kerneltweaker.CustomPreference
+            android:key="pref_vfs"
+            android:title="@string/vfs_title" />
+    </PreferenceCategory>
+
+</PreferenceScreen>
+

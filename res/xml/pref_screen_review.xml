@@ -1,0 +1,41 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:key="key_pref_screen" >
+
+    <PreferenceCategory
+        android:key="cat_cpu"
+        android:title="CPU" >
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:key="cat_gpu"
+        android:title="GPU" >
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:key="cat_uv"
+        android:title="UV Table" >
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:key="cat_kernel"
+        android:title="Kernel " >
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:key="cat_lmk"
+        android:title="Low memory killer" >
+    </PreferenceCategory>
+     <PreferenceCategory
+        android:key="cat_gov"
+        android:title="Governor Tuning" >
+    </PreferenceCategory>
+     <PreferenceCategory
+        android:key="cat_sched"
+        android:title="Scheduler Tuning" >
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:key="cat_quiet"
+        android:title="Cpuquiet" >
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:key="cat_vm"
+        android:title="Virtual Machine" >
+    </PreferenceCategory>
+
+</PreferenceScreen>

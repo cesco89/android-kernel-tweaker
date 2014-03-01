@@ -1,0 +1,44 @@
+#
+####### made by h0rn3t #######
+#
+count_files(){
+if [ "X$2" == "X" ]; then
+    ext="*";
+else
+    ext="$2";
+fi;
+r="";
+for d in $1; do
+    if [ -d $d ]; then
+        i=$( busybox find $d -type f -name "$ext" | busybox wc -l );
+    else
+        i=0;
+    fi;
+    if [ "X$r" == "X" ]; then
+        r="$i";
+    else
+        r="$r:$i";
+    fi;
+done;
+echo "$r";
+}
+arg=$1;
+if [ "$arg" == "-count" ]; then
+    count_files "$DIRS";
+elif [ "$arg" == "-govprop" ]; then
+    r="";
+    gov=$2;
+    if [ "X$gov" == "X" ]; then
+        echo "";
+        exit;
+    fi;
+    for f in $(busybox find /sys/devices/system/cpu/cpufreq/$gov/* -type f -prune -perm -644); do
+        v=$(busybox cat $f);
+        if [ "X$r" == "X" ]; then
+            r="$f:$v";
+        else
+            r="$r;$f:$v";
+        fi;
+    done;
+    echo "$r";
+fi;

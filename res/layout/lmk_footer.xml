@@ -1,0 +1,14 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/preset_layout"
+    android:layout_width="fill_parent"
+    android:layout_height="400dp"
+    android:orientation="vertical" >
+
+    <TextView
+        style="?android:attr/listSeparatorTextViewStyle"
+        android:fontFamily="sans-serif-condensed"
+        android:text="PRESETS"
+        android:layout_marginTop="15dp"
+        android:textColor="@android:color/holo_blue_dark" />
+
+</LinearLayout>

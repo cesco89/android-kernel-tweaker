@@ -1,0 +1,9 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:key="key_root" >
+
+    <PreferenceCategory
+        android:key="key_gov_category"
+        android:title="@string/gov_title" >
+    </PreferenceCategory>
+
+</PreferenceScreen>

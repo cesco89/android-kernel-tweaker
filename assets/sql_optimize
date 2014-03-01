@@ -1,0 +1,43 @@
+#
+#
+function optimize(){
+sql3=`busybox which sqlite3`;
+db=0;
+for i in `busybox find /data -iname "*.db"`; do
+	$sql3 $i 'VACUUM;';
+	db=`busybox expr $db + 1`;
+done;
+if [ -d "/dbdata" ]; then
+	for i in `busybox find /dbdata -iname "*.db"`; do
+		$sql3 $i 'VACUUM;';
+		db=`busybox expr $db + 1`;
+	done;
+fi;
+if [ -d "/system" ]; then
+	for i in `busybox find /system -iname "*.db"`; do
+		$sql3 $i 'VACUUM;';
+		db=`busybox expr $db + 1`;
+	done;
+fi;
+if [ -d "/datadata" ]; then
+	for i in `busybox find /datadata -iname "*.db"`; do
+		$sql3 $i 'VACUUM;';
+		db=`busybox expr $db + 1`;
+	done;
+fi;
+
+SD=`busybox mount | busybox egrep -v "asec|android_secure" | busybox egrep -i "(sdcard|sdcard0|external_sd|sdcard1)"  | busybox awk '{print $3}' `;
+
+for d in $SD; do
+for i in `busybox find $d -iname "*.db"`; do
+	$sql3 $i 'VACUUM;';
+	db=`busybox expr $db + 1`;
+done;
+done;
+busybox echo $db;
+}
+
+#optimize 2>&1 >> /sdcard/sql.log
+optimize;
+
+

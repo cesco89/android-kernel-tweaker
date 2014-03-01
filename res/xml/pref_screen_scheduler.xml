@@ -1,0 +1,9 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:key="key_root" >
+
+    <PreferenceCategory
+        android:key="key_sched_category"
+        android:title="Tweakable Governor Values" >
+    </PreferenceCategory>
+
+</PreferenceScreen>

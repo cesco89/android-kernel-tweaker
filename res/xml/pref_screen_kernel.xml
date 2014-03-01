@@ -1,0 +1,75 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:key="key_pref_screen" >
+
+    <PreferenceCategory android:title="I/O Scheduler"
+        android:key="key_sched_cat" >
+        <com.dsht.kerneltweaker.CustomListPreference
+            android:key="key_cpu_sched"
+            android:title="I/O Scheduler" />
+        <com.dsht.kerneltweaker.CustomListPreference
+            android:key="key_cpu_readahead"
+            android:title="Read Ahead size" />
+
+        <com.dsht.kerneltweaker.CustomPreference
+            android:key="key_advanced_scheduler"
+            android:summary="Fine tune I/O Scheduler parameters"
+            android:title="Scheduler Tuning" />
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:key="key_kernel_tweaks"
+        android:title="Kernel Tweaks" >
+        <com.dsht.kerneltweaker.CustomCheckBoxPreference
+            android:key="key_dynfsync_switch"
+            android:summary="Asyncronous Fsync. If enabled gives stock I/O and data integrity, if Disabled you will have more I/O but less data integrity"
+            android:title="Dynamic Fsync" />
+        <com.dsht.kerneltweaker.CustomCheckBoxPreference
+            android:key="key_fsync_switch"
+            android:summary="If enabled gives stock I/O and data integrity, if Disabled you will have more I/O but less data integrity"
+            android:title="Fsync" />
+        <com.dsht.kerneltweaker.CustomCheckBoxPreference
+            android:key="key_fcharge_switch"
+            android:summary="If enabled, device will charge faster when connected through USB"
+            android:title="Fast Charge" />
+        <com.dsht.kerneltweaker.CustomCheckBoxPreference
+            android:key="key_intelliplug_switch"
+            android:summary="In-kernel solution for MPDecision\n(should save battery)"
+            android:title="Intelli-Plug" />
+        <com.dsht.kerneltweaker.CustomCheckBoxPreference
+            android:key="key_ecomode_switch"
+            android:summary="Child of Intelli-plug, will try to use only two cores without loosing performance"
+            android:title="Eco mode" />
+        <com.dsht.kerneltweaker.CustomCheckBoxPreference
+            android:key="key_dt2w_switch"
+            android:summary="If enabled, you will be able to wake your device with a double tap on the screen"
+            android:title="DoubleTap 2 Wake " />
+        <com.dsht.kerneltweaker.CustomCheckBoxPreference
+            android:key="key_s2w_switch"
+            android:summary="If enabled, you will be able to wake or turn off the screen by swiping on navigation bar area"
+            android:title="Sweep 2 Wake " />
+        <com.dsht.kerneltweaker.CustomCheckBoxPreference
+            android:key="key_s2ws_switch"
+            android:summary="If enabled, you will be able to only turn off the screen by swiping on navigation bar"
+            android:title="Sweep 2 Sleep " />
+        <com.dsht.kerneltweaker.CustomCheckBoxPreference
+            android:key="key_f2w_switch"
+            android:summary="If enabled, you will be able to only turn off the screen by swiping on navigation bar"
+            android:title="Flick 2 Wake " />
+        <com.dsht.kerneltweaker.CustomCheckBoxPreference
+            android:key="key_f2s_switch"
+            android:summary="If enabled, you will be able to only turn off the screen by swiping on navigation bar"
+            android:title="Flick 2 Sleep " />
+        <com.dsht.kerneltweaker.CustomPreference
+            android:key="key_vibration"
+            android:summary=""
+            android:title="Vibration Intensity" />
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:key="key_sound_category"
+        android:title="Sound Tweaks" >
+        <com.dsht.kerneltweaker.CustomPreference
+            android:key="key_kernel_info"
+            android:summary="These tweaks changes gains of microphone speaker and headsets. Values from -20 to 20"
+            android:title="Information" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

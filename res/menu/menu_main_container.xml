@@ -1,0 +1,4 @@
+
+    <menu xmlns:android="http://schemas.android.com/apk/res/android">
+        <item android:id="@+id/help" android:showAsAction="always" android:icon="@drawable/ic_help" android:title="Help"></item>
+    </menu>

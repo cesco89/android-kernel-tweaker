@@ -1,0 +1,36 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:key="key_root" >
+
+    <PreferenceCategory android:title="CPU Parameters" >
+        <com.dsht.kerneltweaker.CustomListPreference
+            android:key="key_cpu_max"
+            android:title="@string/cpu_max" />
+        <com.dsht.kerneltweaker.CustomListPreference
+            android:key="key_cpu_min"
+            android:title="@string/cpu_min" />
+        <com.dsht.kerneltweaker.CustomListPreference
+            android:key="key_cpu_governor"
+            android:title="@string/cpu_governor" />
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:key="key_hotplug_category"
+        android:title="@string/cpu_hotplug" >
+        <com.dsht.kerneltweaker.CustomListPreference
+            android:key="key_cpuquiet"
+            android:summary="@string/cpu_cpuquiet_desc"
+            android:title="@string/cpu_cpuquiet_title" />
+    </PreferenceCategory>
+    <PreferenceCategory 
+        android:key="key_advanced"
+        android:title="@string/cpu_advanced" >
+        <com.dsht.kerneltweaker.CustomPreference
+            android:key="key_advanced_governor"
+            android:summary="@string/cpu_adv_gov_desc"
+            android:title="@string/cpu_adv_gov_title" />
+        <com.dsht.kerneltweaker.CustomPreference
+            android:key="key_advanced_cpuquiet"
+            android:summary="@string/cpu_adv_quiet_desc"
+            android:title="@string/cpu_adv_quiet_title" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

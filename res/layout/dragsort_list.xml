@@ -1,0 +1,81 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/com.dsht.kerneltweaker"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <com.mobeta.android.dslv.DragSortListView
+        android:id="@+id/dslist"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        app:drag_start_mode="onDown"
+        app:float_alpha="0.2"
+        app:float_background_color="#FFFFFFFF"
+        app:slide_shuffle_speed="0.3"
+        app:sort_enabled="true"
+        app:use_default_controller="false" />
+
+    <TextView
+        android:id="@+id/empty"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center"
+        android:fontFamily="sans-serif-condensed"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="@string/list_command_empty"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#ff4444" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"
+            android:orientation="vertical" >
+        </LinearLayout>
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/cancel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="sans-serif-condensed"
+            android:background="@drawable/bottombutton"
+            android:text="Cancel" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp" >
+
+            <LinearLayout
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@android:color/darker_gray" >
+            </LinearLayout>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/reboot"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bottombutton"
+            android:fontFamily="sans-serif-condensed"
+            android:layout_weight="1"
+            android:text="Reboot" />
+    </LinearLayout>
+    
+</LinearLayout>

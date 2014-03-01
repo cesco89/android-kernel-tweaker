@@ -1,0 +1,1167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Kernel Tweaker</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+
+    <!-- About -->
+    <string name="title_about">About</string>
+    <string name="about_ok">OK</string>
+    <string name="about_body">
+<![CDATA[
+        <b>Colorpickercollection Library & Demo</b><br>
+        Version %s<br><br>
+        <a href="https://github.com/gabrielemariotti/colorpickercollection">Source</a><br><br>
+        <a href="https://plus.google.com/114432517923423045208">By Gabriele Mariotti</a><br><br>
+
+    ]]>
+    </string>
+
+    <string-array name="menu_entries">
+        <item>--Device Info</item>
+        <item>Cpu Stats</item>
+        <item>Cpu Info</item>
+        <item>--SoC Params</item>
+        <item>Cpu Parameters</item>
+        <item>Gpu Parameters</item>
+        <item>UV Table</item>
+        <item>--Kernel Params</item>
+        <item>Kernel</item>
+        <item>Low Memory Killer</item>
+        <item>Virtual Machine</item>
+        <item>--Set on boot</item>
+        <item>Review Items</item>
+        <item>--Utilities</item>
+        <item>File Manager</item>
+        <item>Backup</item>
+        <item>Recovery actions</item>
+        <item>--Extra</item>
+        <item>Build.prop mods</item>
+        <item>Init.d tweaks</item>
+        <item>WP Blur</item>
+        <item>--App Settings/infos</item>
+        <item>Settings</item>
+        <item>Informations</item>
+    </string-array>
+    <string-array name="menu_descs">
+        <item>Frequencies time in state</item>
+        <item>Informations about CPU</item>
+        <item>Tweak CPU Parameters</item>
+        <item>Tweak GPU Parameters</item>
+        <item>Manage CPU Voltage</item>
+        <item>Tweak Kernel Parameters</item>
+        <item>Tweak native task killer</item>
+        <item>VM Settings</item>
+        <item>Review values set at boot</item>
+        <item>Manage some file types</item>
+        <item>Backup current kernel/recovery</item>
+        <item>Execute recovery stuff</item>
+        <item>App Settings</item>
+        <item>Informations and credits</item>
+    </string-array>
+    <string-array name="menu_colors">
+        <item>#ff0099cc</item>
+        <item>#ff0099cc</item>
+        <item>#ff0099cc</item>
+        <item>#ff0099cc</item>
+        <item>#ff0099cc</item>
+        <item>#ff0099cc</item>
+        <item>#ff0099cc</item>
+        <item>#ff0099cc</item>
+        <item>#ff0099cc</item>
+        <item>#ff0099cc</item>
+        <item>#ff0099cc</item>
+        <item>#ff0099cc</item>
+        <item>#ff0099cc</item>
+        <item>#ff0099cc</item>
+    </string-array>
+    <string-array name="flash_dialog">
+        <item>Flash Package</item>
+    </string-array>
+    <string-array name="install_image_dialog">
+        <item>Install Boot.img</item>
+        <item>Install Recovery.img</item>
+    </string-array>
+
+    <string name="bk_recovery">Backup Recovery.img</string>
+    <string name="bk_boot">Backup Boot.img</string>
+    <string name="bk_boot_desc">Make a backup of current Boot.img on external storage</string>
+    <string name="bk_recovery_desc">Make a backup of current Recovery.img on external storage</string>
+    <string name="bk_comp">Use Compression</string>
+    <string name="bk_md5">Skip MD5 creation</string>
+    <string name="list_command_empty">Commands list is empty.\n Tap the plus button to add a command</string>
+    <string name="emp_title">EMPTY</string>
+    <string name="emp_desc">No Values set at boot</string>
+    <string name="rc_title">Root not found</string>
+    <string name="rc_desc">Seems your device doesn\'t have root privileges! Please install SuperSU before use this app</string>
+    <string name="bb_title">BusyBox not found</string>
+    <string name="bb_desc">Your device doesn\'t have BusyBox installed, please install it through PlayStore or XDA before use this app</string>
+    <string name="st_cat">Kernel Tweaker settings</string>
+    <string name="gift">Just a gift ;)</string>
+
+    <string-array name="lmk_titles">
+        <item>FOREGROUND_APP</item>
+        <item>VISIBLE_APP</item>
+        <item>SECONDARY_SERVER</item>
+        <item>HIDDEN_APP</item>
+        <item>CONTENT_PROVIDER</item>
+        <item>EMPTY_APP</item>
+    </string-array>
+    <string-array name="lmk_descs">
+        <item>The application currently on the screen and running</item>
+        <item>The application that is open and running in background</item>
+        <item>This is a service an application needs that is alive and ready</item>
+        <item>An idle process that wakes up on application request</item>
+        <item>Apps that provide data (content) to the system, like Facebook sync</item>
+        <item>Apps closed by the users but ready to run</item>
+    </string-array>
+
+    <string name="vdd_pref">UV VDD Table</string>
+    <string name="vdd_desc">The values you have set inside UV Table page will be applied at boot.\nIf you want to edit these values go to UV Table page.</string>
+    <string name="menu_del">Delete</string>
+    <string name="menu_add">Add</string>
+    <string name="menu_boot">Set on boot</string>
+    <string name="menu_command">Add command</string>
+    <string name="menu_less">-25mV</string>
+    <string name="menu_plus">+25mV</string>
+    <string name="uv_title">UV Table Values</string>
+    <string name="cpu_max">CPU Max Frequency</string>
+    <string name="cpu_min">CPU Min Frequency</string>
+    <string name="cpu_governor">Governor</string>
+    <string name="cpu_hotplug">Hotplug</string>
+    <string name="cpu_cpuquiet_title">Cpuquiet Governor</string>
+    <string name="cpu_cpuquiet_desc">This governor controls which of the CPU cores are available and when.</string>
+    <string name="cpu_advanced">Advanced Options</string>
+    <string name="cpu_adv_gov_title">Governor Tuning</string>
+    <string name="cpu_adv_gov_desc">Fine tune governor parameters</string>
+    <string name="cpu_adv_quiet_title">Cpuquiet Governor Tuning</string>
+    <string name="cpu_adv_quiet_desc">Fine tune cpuquiet governor parameters</string>
+    <string name="gov_title">Tweakable Governor Values</string>
+    <string name="gpu_category">GPU parameters</string>
+    <string name="gpu_freq_title">GPU Max Frequency</string>
+    <string name="gpu_freq_desc">Set GPU maximum frequency</string>
+    <string name="menu_glossary">GLOSSARY</string>
+
+    <string-array name="glo_cpu_titles">
+        <item>Max Frequency</item>
+        <item>Min Frequency</item>
+        <item>Governor</item>
+        <item>Cores_on_touch</item>
+        <item>First_level</item>
+    </string-array>
+    <string-array name="glo_cpu_descs">
+        <item>The maximum frequency the CPU will use. You can lower it to increase battery life, or increase it for performance</item>
+        <item>The minimum frequency the CPU will use. You can increase it for better performance or lower it for battery life</item>
+        <item>This controls the scaling of the CPU frequencies depending on CPU load\n(Click to show governors explanations)</item>
+        <item>How many cores goes online when you touch the screen</item>
+        <item>The threshold that controls when a core will be woked up. Higher the value, harder for CPU core to become online</item>
+    </string-array>
+    <string-array name="glo_gov_titles">
+        <item>Performance</item>
+        <item>Powersave</item>
+        <item>Userspace</item>
+        <item>Ondemand</item>
+        <item>Conservative</item>
+        <item>Interactive</item>
+        <item>Smartass</item>
+    </string-array>
+    <string-array name="glo_gov_descs">
+        <item>The CPUfreq governor performance sets the CPU statically to the
+highest frequency within the borders of scaling_min_freq and
+scaling_max_freq.</item>
+        <item>The CPUfreq governor powersave sets the CPU statically to the
+lowest frequency within the borders of scaling_min_freq and
+scaling_max_freq.</item>
+        <item>The CPUfreq governor userspace allows the user, or any userspace
+program running with UID root, to set the CPU to a specific frequency
+by making a sysfs file scaling_setspeed available in the CPU-device
+directory.</item>
+        <item>The CPUfreq governor ondemand sets the CPU depending on the
+current usage. To do this the CPU must have the capability to
+switch the frequency very quickly.</item>
+        <item>The CPUfreq governor conservative, much like the ondemand
+governor, sets the CPU depending on the current usage.  It differs in
+behaviour in that it gracefully increases and decreases the CPU speed
+rather than jumping to max speed the moment there is any load on the
+CPU.  This behaviour more suitable in a battery powered environment.</item>
+        <item>The CPUfreq governor interactive is designed for latency-sensitive,
+interactive workloads. This governor sets the CPU speed depending on
+usage, similar to ondemand and conservative governors.  However,
+the governor is more aggressive about scaling the CPU speed up in
+response to CPU-intensive activity.
+
+Sampling the CPU load every X ms can lead to under-powering the CPU
+for X ms, leading to dropped frames, stuttering UI, etc.  Instead of
+sampling the cpu at a specified rate, the interactive governor will
+check whether to scale the cpu frequency up soon after coming out of
+idle.  When the cpu comes out of idle, a timer is configured to fire
+within 1-2 ticks.  If the cpu is very busy between exiting idle and
+when the timer fires then we assume the cpu is underpowered and ramp
+to MAX speed.
+
+If the cpu was not sufficiently busy to immediately ramp to MAX speed,
+then governor evaluates the cpu load since the last speed adjustment,
+choosing the highest value between that longer-term load or the
+short-term load since idle exit to determine the cpu speed to ramp to.</item>
+        <item>Result of Erasmux rewriting the complete code of interactive governor.
+             Main goal is to optimize battery life without comprising performance. 
+             Still, not as battery friendly as smartassV2 since screen-on minimum frequency is greater than frequencies used during screen-off. Smartass would jump up to highest frequency too often as well.</item>
+    </string-array>
+    <string-array name="glo_ondemand_titles">
+        <item>sampling_rate</item>
+        <item>up_threshold</item>
+        <item>powersave_bias</item>
+        <item>sampling_down_factor</item>
+        <item>down_differential</item>
+        <item>freq_step</item>
+    </string-array>
+    <string-array name="glo_ondemand_descs">
+        <item>Measured in uS , this is how often the kernel look at the CPU usage and make decisions on what to do about the frequency. Higher values means CPU polls less often. For lower frequencies, this could be considered an advantage since it might not jump to next frequency very often, but for higher frequencies, the scale-down time will be increased.</item>
+        <item>Measured in percentage from 1 to 100, When CPU load reaches this point, governor will scale CPU up. Higher value means less responsiveness and lower values corresponds to more responsiveness at the cost of battery. </item>
+        <item>Default value is 0. Setting a higher value will bias the governor towards lower frequency steps. Use this if you want CPU to spend less time on higher frequencies. A better alternative would be to underclock to a lower frequency than using powersave bias.</item>
+        <item>In the simplest form, sampling_down_factor determines how often CPU should stay at higher frequencies when truly busy. Default behavior is fast switching to lower frequencies (1). Having sampling_down_factor set to 1 makes no changes from existing behavior (for the non-modified ondemand), but having sampling_down_factor set to a value greater than 1 causes it to act as a multiplier for the scheduling interval for re-evaluating the load when the CPU is at its highest clock frequency (which is scaling_max_freq) due to high load. This improves performance by reducing the overhead of load evaluation and helping the CPU stay at its highest clock frequency when it is truly busy, rather than shifting back and forth in speed. This tunable has no effect on behavior at lower frequencies/lower CPU loads.</item>
+        <item>This factor indirectly calculate the down-threshold of Ondemand. 
+            After completing sampling-down-factor*sampling-rate at max frequency because of high load, 
+            governor samples the load again to calculate an estimate of the new target frequency in a 
+            way that the lowest frequency will be chosen that would not trigger up_threshold in the 
+            next sample. Because triggering up-threshold will again cause CPU to scale up to max frequency. 
+            During this choice down_differential is taken into account as a breathing room value. 
+            Target frequency is calculated as max_load_freq / (up_threshold - down_differential). The obtained value might be a non-existent value in the freq_table and CPU driver will round it off to a value in freq_table. max_load_freq is the theoretical frequency at which CPU can handle 100% workload. 
+            It is usually a value below scaling_max_freq.</item>
+        <item>Whenever up-scaling logic is triggered the governor instructs the CPU to raise its frequency by freq_step percentage of max allowed frequency.</item>
+    </string-array>
+    <string-array name="glo_interactive_titles">
+        <item>hispeed_freq</item>
+        <item>go_hispeed_load</item>
+        <item>min_sample_time</item>
+        <item>timer_rate</item>
+        <item>above_hispeed_delay</item>
+        <item>input_boost</item>
+        <item>boost</item>
+        <item>boostpulse</item>
+    </string-array>
+    <string-array name="glo_interactive_descs">
+        <item>An intermediate hi speed at which to initially ramp
+when CPU load hits the value specified in go_hispeed_load.  If load
+stays high for the amount of time specified in above_hispeed_delay,
+then speed may be bumped higher.  Default is maximum speed.</item>
+        <item>The CPU load at which to ramp to the intermediate hi
+speed.  Default is 85%.</item>
+        <item>The minimum amount of time to spend at the current
+frequency before ramping down. This is to ensure that the governor has
+seen enough historic cpu load data to determine the appropriate
+workload.  Default is 80000 uS.</item>
+        <item>Sample rate for reevaluating cpu load when the system is
+not idle.  Default is 20000 uS.</item>
+        <item>Once speed is set to hispeed_freq, wait for this
+long before bumping speed higher in response to continued high load.
+Default is 20000 uS.</item>
+        <item>Once speed is set to hispeed_freq, wait for this
+long before bumping speed higher in response to continued high load.
+Default is 20000 uS.</item>
+        <item>If non-zero, boost speed of all CPUs to hispeed_freq on
+touchscreen activity.  Default is 0.</item>
+        <item>If non-zero, immediately boost speed of all CPUs to at least
+hispeed_freq until zero is written to this attribute.  If zero, allow
+CPU speeds to drop below hispeed_freq according to load as usual.</item>
+        <item>Immediately boost speed of all CPUs to hispeed_freq for
+min_sample_time, after which speeds are allowed to drop below
+hispeed_freq according to load as usual.</item>
+    </string-array>
+    <string-array name="glo_conservative_titles">
+        <item>freq_step</item>
+        <item>down_threshold</item>
+    </string-array>
+    <string-array name="glo_conservative_descs">
+        <item>this describes what percentage steps the cpu freq should be
+increased and decreased smoothly by.  By default the cpu frequency will
+increase in 5% chunks of your maximum cpu frequency.  You can change this
+value to anywhere between 0 and 100 where 0 will effectively lock your
+CPU at a speed regardless of its load whilst 100 will, in theory, make
+it behave identically to the ondemand governor.</item>
+        <item>same as the up_threshold found for the ondemand
+governor but for the opposite direction.  For example when set to its
+default value of 20 it means that if the CPU usage needs to be below
+20% between samples to have the frequency decreased.</item>
+    </string-array>
+    <string-array name="glo_gpu_titles">
+        <item>GPU Max Frequency</item>
+        <item>up_threshold</item>
+        <item>down_threshold</item>
+        <item>sample_time_ms</item>
+    </string-array>
+    <string-array name="glo_gpu_descs">
+        <item>The maximum clock that the GPU can use. Reduce this frequency for better battery life at cost of performance</item>
+        <item>When the GPU load is equal or above this value the GPU governor will increase the frequency</item>
+        <item>When the GPU load is equal or above this value the GPU governor will decrease the frequency</item>
+        <item>This is how often the governor polls for the GPU load. Increase for battery life, decrease for performance. 1000 equals 1 second.</item>
+    </string-array>
+    <string-array name="glo_uv_titles">
+        <item>UnderVolting</item>
+    </string-array>
+    <string-array name="glo_uv_descs">
+        <item>UnderVolt table allows you to change the voltage parameter of every frequency. This means that you can set, for every frequency, how much current the CPU 
+            must use. Lowering voltages means some battery saving, but you are warned! Lowering frequencies too much can make your device crash or freeze, so, proceed with little steps 
+            until you find your ideal spot. Hit the \"Set on boot\" option ONLY after some tests or your device will freeze/crash on next reboot!</item>
+    </string-array>
+    <string-array name="glo_kernel_titles">
+        <item>I/O Scheduler</item>
+        <item>Read ahead size</item>
+        <item>TCP Congestion control</item>
+        <item>Fsync</item>
+        <item>Fast Charge</item>
+        <item>Vibration Intensity</item>
+        <item>Temp_threshold</item>
+        <item>Headset_boost</item>
+        <item>Mic_boost</item>
+        <item>Speaker_boost</item>
+        <item>Volume_boost</item>
+    </string-array>
+    <string-array name="pie_colors">
+        <item>#ffffff</item>
+        <item>#9c35d0</item>
+        <item>#33b5e5</item>
+        <item>#fb8600</item>
+        <item>#cc0101</item>
+        <item>#ffbc37</item>
+        <item>#009cd0</item>
+        <item>#689c00</item>
+        <item>#ff4646</item>
+        <item>#9ed201</item>
+        <item>#ac68ce</item>
+        <item>#ffffff</item>
+        <item>#9c35d0</item>
+        <item>#33b5e5</item>
+        <item>#fb8600</item>
+        <item>#cc0101</item>
+        <item>#ffbc37</item>
+        <item>#009cd0</item>
+        <item>#689c00</item>
+        <item>#ff4646</item>
+        <item>#9ed201</item>
+        <item>#ac68ce</item>
+    </string-array>
+    <string-array name="glo_kernel_descs">
+        <item>Is the method that computer operating systems use to decide which order block I/O operations will be submitted to storage volumes. I/O Scheduling is sometimes called disk scheduling.\n\n(click for Sheduler types explanation)</item>
+        <item>It is a system call that loads a file\'s contents into the page cache. When a file is subsequently accessed, its contents are read from physical memory rather than from disk, which is much faster.</item>
+        <item>(click to show algorithms explanation)\n\nTo avoid congestion collapse, TCP uses a multi-faceted congestion-control strategy.
+             For each connection, TCP maintains a congestion window, 
+             limiting the total number of unacknowledged packets that may be in transit end-to-end. 
+             This is somewhat analogous to TCP\'s sliding window used for flow control. 
+             TCP uses a mechanism called slow start to increase the congestion window after a connection is initialized and after a timeout. 
+             It starts with a window of two times the maximum segment size (MSS). 
+             Although the initial rate is low, the rate of increase is very rapid: 
+             for every packet acknowledged, the congestion window increases by 1 MSS 
+             so that the congestion window effectively doubles for every round-trip time (RTT). 
+             When the congestion window exceeds a threshold ssthresh the algorithm enters a new state, 
+             called congestion avoidance. In some implementations (e.g., Linux), the initial ssthresh is large,
+              and so the first slow start usually ends after a loss. 
+              However, ssthresh is updated at the end of each slow start, 
+              and will often affect subsequent slow starts triggered by timeouts.</item>
+        <item>Fsync transfers (\"flushes\") all modified in-core data of (i.e.,
+       modified buffer cache pages for) the file referred to by the file
+       descriptor to the disk device (or other permanent storage device)
+       so that all changed information can be retrieved even after the
+       system crashed or was rebooted.  This includes writing through or
+       flushing a disk cache if present.  The call blocks until the device
+       reports that the transfer has completed.  It also flushes metadata
+       information associated with the file </item>
+        <item>Fast Charge function will drain more current from PC or Notebook when your device is plugged, so your device will charge faster.
+            Fast Charge will not damage your device and will not damage your laptop.</item>
+        <item>This parameter will change the vibration strength. Increasing this value means a stronger vibration feedback. Minimum values is 0, maximum 100</item>
+        <item>Maximum CPU temperature before the CPU gets throttled down to become cooler. Values are in °C</item>
+        <item>Increase or decrease headsets gain. Values from -20 to 20</item>
+        <item>Increase or decrease microphone gain. Values from -20 to 20</item>
+        <item>Increase or decrease speaker gain. Values from -20 to 20</item>
+        <item>Increase or decrease volume gain. Values from -20 to 20</item>
+    </string-array>
+    <string-array name="glo_sched_titles">
+        <item>Noop</item>
+        <item>Deadline</item>
+        <item>CFQ</item>
+        <item>BFQ</item>
+        <item>SIO</item>
+        <item>V(R)</item>
+    </string-array>
+    <string-array name="glo_sched_descs">
+        <item>Inserts all the incoming I/O requests to a First In First Out queue and implements request merging. Best used with storage devices that does not depend on mechanical movement to access data (yes, like our flash drives). Advantage here is that flash drives does not require reordering of multiple I/O requests unlike in normal hard drives.</item>
+        <item>Goal is to minimize I/O latency or starvation of a request. The same is achieved by round robin policy to be fair among multiple I/O requests. Five queues are aggressively used to reorder incoming requests.</item>
+        <item>Completely Fair Queuing scheduler maintains a scalable per-process I/O queue and attempts to distribute the available I/O bandwidth equally among all I/O requests. Each per-process queue contains synchronous requests from processes. Time slice allocated for each queue depends on the priority of the parent process. V2 of CFQ has some fixes which solves process\' i/o starvation and some small backward seeks in the hope of improving responsiveness.</item>
+        <item>Instead of time slices allocation by CFQ, BFQ assigns budgets. Disk is granted to an active process until it\'s budget (number of sectors) expires. BFQ assigns high budgets to non-read tasks. Budget assigned to a process varies over time as a function of it\'s behavior.</item>
+        <item>Simple I/O scheduler aims to keep minimum overhead to achieve low latency to serve I/O requests. No priority quesues concepts, but only basic merging. Sio is a mix between noop and deadline. No reordering or sorting of requests.</item>
+        <item>Unlike other schedulers, synchronous and asynchronous requests are not treated separately, instead a deadline is imposed for fairness. The next request to be served is based on it\'s distance from last request.</item>
+    </string-array>
+    <string-array name="glo_tcp_titles">
+        <item>Tahoe</item>
+        <item>Reno</item>
+        <item>Vegas</item>
+        <item>New Reno</item>
+        <item>Hybla</item>
+        <item>BIC</item>
+        <item>CUBIC</item>
+        <item>westwood</item>
+        <item>scalable</item>
+        <item>HTCP</item>
+    </string-array>
+    <string-array name="glo_tcp_descs">
+        <item>Triple duplicate ACKS are treated the same as a timeout. Tahoe will perform \"fast retransmit\", set the slow start threshold to half the current congestion window, reduce congestion window to 1 MSS, and reset to slow-start state.</item>
+        <item>If three duplicate ACKs are received (i.e., four ACKs acknowledging the same packet, which are not piggybacked on data, and do not change the receiver\'s advertised window), Reno will halve the congestion window (instead of setting it to 1 MSS like Tahoe), set the slow start threshold equal to the congestion window, perform a fast retransmit, and enter a phase called Fast Recovery. 
+    	    If an ACK times out, slow start is used as it is with Tahoe.</item>
+        <item>Until the mid-1990s, all of TCP\'s set timeouts and measured round-trip delays were based upon only the last transmitted packet in the transmit buffer. University of Arizona researchers Larry Peterson and Lawrence Brakmo introduced TCP Vegas, named after the largest Nevada city, in which timeouts were set and round-trip delays were measured for every packet in the transmit buffer. In addition, TCP Vegas uses additive increases in the congestion window. This variant was not widely deployed outside Peterson\'s laboratory. In a comparison study of various TCP congestion control algorithms, TCP Vegas appeared to be the smoothest followed by TCP CUBIC.</item>
+        <item>TCP New Reno, defined by RFC 6582 (which obsoletes previous definitions in RFC 3782 and RFC 2582), improves retransmission during the fast-recovery phase of TCP Reno. During fast recovery, for every duplicate ACK that is returned to TCP New Reno, a new unsent packet from the end of the congestion window is sent, to keep the transmit window full. For every ACK that makes partial progress in the sequence space, the sender assumes that the ACK points to a new hole, and the next packet beyond the ACKed sequence number is sent.
+Because the timeout timer is reset whenever there is progress in the transmit buffer, this allows New Reno to fill large holes, or multiple holes, in the sequence space – much like TCP SACK. Because New Reno can send new packets at the end of the congestion window during fast recovery, high throughput is maintained during the hole-filling process, even when there are multiple holes, of multiple packets each. When TCP enters fast recovery it records the highest outstanding unacknowledged packet sequence number. When this sequence number is acknowledged, TCP returns to the congestion avoidance state.
+A problem occurs with New Reno when there are no packet losses but instead, packets are reordered by more than 3 packet sequence numbers. When this happens, New Reno mistakenly enters fast recovery, but when the reordered packet is delivered, ACK sequence-number progress occurs and from there until the end of fast recovery, every bit of sequence-number progress produces a duplicate and needless retransmission that is immediately ACKed.
+New Reno performs as well as SACK at low packet error rates, and substantially outperforms Reno at high error rates.</item>
+        <item>TCP Hybla aims to eliminate penalization of TCP connections that incorporate a high-latency terrestrial or satellite radio link, due to their longer round trip times. It stems from an analytical evaluation of the congestion window dynamics, which suggests the necessary modifications to remove the performance dependence on RTT.</item>
+        <item>Binary Increase Congestion control is an implementation of TCP with an optimized congestion control algorithm for high speed networks with high latency (called LFN, long fat networks, in RFC 1072). BIC is used by default in Linux kernels 2.6.8 through 2.6.18.</item>
+        <item>CUBIC is a less aggressive and more systematic derivative of BIC, in which the window is a cubic function of time since the last congestion event, with the inflection point set to the window prior to the event. CUBIC is used by default in Linux kernels since version 2.6.19.</item>
+        <item>TCP Westwood (TCPW) is a sender-side-only modification to TCP New Reno that is intended to better handle large bandwidth-delay product paths (large pipes), with potential packet loss due to transmission or other errors (leaky pipes), and with dynamic load (dynamic pipes).
+TCP Westwood relies on mining the ACK stream for information to help it better set the congestion control parameters: Slow Start Threshold (ssthresh), and Congestion Window (cwin). In TCP Westwood, an \"Eligible Rate\" is estimated and used by the sender to update ssthresh and cwin upon loss indication, or during its \"Agile Probing\" phase, a proposed modification to the well-known Slow Start phase. In addition, a scheme called Persistent Non Congestion Detection (PNCD) has been devised to detect persistent lack of congestion and induce an Agile Probing phase to expeditiously utilize large dynamic bandwidth.</item>
+        <item>Scalable TCP modifies the congestion control algorithm. Instead of halving the congestion window size, each packet loss decreases the congestion window by a small fraction (a factor of 1/8 instead of Standard TCP\'s 1/2) until packet loss stops. When packet loss stops, the rate is ramped up at a slow fixed rate (one packet is added for every one hundred successful acknowledgements) instead of the Standard TCP rate that\'s the inverse of the congestion window size (thus very large windows take a long time to recover). This helps reduce the recovery time on 10 Gbit links from 4+ hours (using Standard TCP) to less than 15 seconds when the round trip time is 200 milliseconds.</item>
+        <item>H-TCP is a loss-based algorithm, using additive-increase/multiplicative-decrease (AIMD) to control TCP\'s congestion window. It is one of many TCP congestion avoidance algorithms which seeks to increase the aggressiveness of TCP on high bandwidth-delay product (BDP) paths, while maintaining \"TCP friendliness\" for small BDP paths. H-TCP increases its aggressiveness (in particular, the rate of additive increase) as the time since the previous loss increases. This avoids the problem encountered by HSTCP and BIC TCP of making flows more aggressive if their windows are already large. Thus, new flows can be expected to converge to fairness faster under HTCP than HSTCP and BIC TCP.</item>
+    </string-array>
+    <string-array name="glo_vm_titles">
+        <item>Dirty Ratio</item>
+        <item>Dirty Background Ratio</item>
+        <item>Dirty Expire Centisecs</item>
+        <item>Dirty Writeback centisecs</item>
+        <item>Overcommit Ratio</item>
+        <item>Swappiness</item>
+        <item>VFS Cache Pressure</item>
+    </string-array>
+    <string-array name="glo_vm_descs">
+        <item>Contains, as a percentage of total available memory that contains free pages
+and reclaimable pages, the number of pages at which a process which is
+generating disk writes will itself start writing out dirty data.
+The total avaiable memory is not equal to total system memory.</item>
+        <item>Contains, as a percentage of total available memory that contains free pages
+and reclaimable pages, the number of pages at which the background kernel
+flusher threads will start writing out dirty data.
+The total avaiable memory is not equal to total system memory.</item>
+        <item>This tunable is used to define when dirty data is old enough to be eligible
+for writeout by the kernel flusher threads.  It is expressed in 100\'ths
+of a second.  Data which has been dirty in-memory for longer than this
+interval will be written out next time a flusher thread wakes up.</item>
+        <item>The kernel flusher threads will periodically wake up and write `old\' data
+out to disk.  This tunable expresses the interval between those wakeups, in
+100\'ths of a second.</item>
+        <item>The kernel flusher threads will periodically wake up and write `old\' data
+out to disk.  This tunable expresses the interval between those wakeups, in
+100\'ths of a second.</item>
+        <item>This control is used to define how aggressive the kernel will swap
+memory pages.  Higher values will increase agressiveness, lower values
+decrease the amount of swap.
+The default value is 60.</item>
+        <item>Controls the tendency of the kernel to reclaim the memory which is used for
+caching of directory and inode objects.
+At the default value of vfs_cache_pressure=100 the kernel will attempt to
+reclaim dentries and inodes at a "fair" rate with respect to pagecache and
+swapcache reclaim.  Decreasing vfs_cache_pressure causes the kernel to prefer
+to retain dentry and inode caches. When vfs_cache_pressure=0, the kernel will
+never reclaim dentries and inodes due to memory pressure and this can easily
+lead to out-of-memory conditions. Increasing vfs_cache_pressure beyond 100
+causes the kernel to prefer to reclaim dentries and inodes.</item>
+    </string-array>
+    <string-array name="glo_lmk_titles">
+        <item>Low Memory Killer</item>
+    </string-array>
+    <string-array name="glo_lmk_descs">
+        <item>When your phone boots up, a file inside the boot image (init.rc) sets the system parameters.  Things like the path to framework files, setting up your networks, and setting the limits at which programs are killed off to free RAM are done by this file. The killing parameters are knows as Low Memory Killer Parameters</item>
+    </string-array>
+
+    <!-- Menu -->
+    <string name="mt_refresh">Refresh</string>
+    <string name="mt_app_settings">"App Settings"</string>
+    <string name="mt_reset">Reset</string>
+    <string name="mt_restore">Restore</string>
+    <string name="mt_plus25">Increase by 25 mV</string>
+    <string name="mt_minus25">Decrease by 25 mV</string>
+    <!-- CPU settings -->
+    <string name="current_speed">Current Speed</string>
+    <string name="current_max">Maximum speed: </string>
+    <string name="current_min">Minimum speed: </string>
+    <string name="governor">Governor</string>
+    <string name="io">I/O Scheduler</string>
+    <string name="sob">Apply automatically on boot</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="cpu_info_list_header">Core Status</string>
+    <string name="cpu_speed_header">Core Limits</string>
+    <string name="other_settings_header">Other settings</string>
+    <string name="core_offline">Offline</string>
+    <string name="core">Core</string>
+
+    <!-- Other settings -->
+    <string name="prefcat_free_memory">FREE MEMORY</string>
+    <string name="prefcat_tweaks">FAST CHARGE</string>
+    <string name="prefcat_misc_short">MISC</string>
+    <string name="prefcat_read_ahead">SD READ AHEAD</string>
+    <string name="prefcat_vm_settings">DALVIK SETTINGS</string>
+    <string name="dt_free_memory">Minfree Taskkiller</string>
+    <string name="dt_read_ahead">SD Read Ahead</string>
+    <string name="pt_free_memory">Free memory</string>
+    <string name="ps_free_memory">Amount of RAM the minfree taskkiller will keep |
+        Current: %s</string>
+    <string name="ps_free_memory_boot">Apply the amount above at boot</string>
+    <string name="pt_read_ahead">Storage read ahead</string>
+    <string name="ps_read_ahead">Amount to read ahead on storage, in kb |
+        Current: %s</string>
+    <string name="ps_fast_charge_boot">Fast charge</string>
+    <string name="fast_charge_warning">YOU WILL NOT BE ABLE TO CONNECT TO YOUR PC AFTER
+        EACH REBOOT!\n\nWhile Fast Charge is ON, you can *only* charge your phone!</string>
+    <string name="fast_charge_notification_title">Fast Charge is ON!</string>
+    <string name="fast_charge_notification_message">Phone is in charge-only mode!</string>
+
+    <!-- minfree -->
+    <string name="prefcat_oom">MINIMUM FREE MEMORY</string>
+    <string name="title_foreground_app">Foreground applications</string>
+    <string name="title_visible_app">Visible Applications</string>
+    <string name="title_secondary_server">Secondary Server</string>
+    <string name="title_hidden_app">Hidden Applications</string>
+    <string name="title_content_providers">Content Providers</string>
+    <string name="title_empty_app">Empty Applications</string>
+    <string name="prefcat_oom_predefines">PRESETS</string>
+    <string name="pt_oom">Minfree Taskkiller Presets</string>
+    <string name="pt_verylight">Very Light (Kills rarely)</string>
+    <string name="pt_light">Light</string>
+    <string name="pt_medium">Medium</string>
+    <string name="pt_aggressive">Aggressive</string>
+    <string name="pt_veryaggressive">Very Aggressive (Kills often)</string>
+
+    <!-- do not kill proc -->
+    <string name="prefcat_user_proc">NOT KILLABLE USER PROCESSES</string>
+    <string name="prefcat_sys_proc">NOT KILLABLE SYSTEM PROCESSES</string>
+    <string name="pt_user_proc">Enable not killable user processes</string>
+    <string name="pt_sys_proc">Enable not killable system processes</string>
+    <string name="pt_user_names_proc">User Processes whitelist</string>
+    <string name="pt_sys_names_proc">System Processes whitelist</string>
+    <string name="ps_restore_boot">Restore above settings at boot</string>
+    <string name="ps_user_proc">The list of user process names (comma separated)</string>
+    <string name="ps_sys_proc">The list of system process names (comma separated)</string>
+    <string name="no_proc">No packages</string>
+    <!-- bln -->
+    <string name="prefcat_bln">BACKLIGHT NOTIFICATION</string>
+    <string name="pt_bln">Backlight Notification</string>
+    <!-- blx -->
+    <string name="blx_info">Battery Life eXtender feature\nAuthor Ezekeel</string>
+    <string name="prefcat_blx">BATTERY LIFE EXTENDER</string>
+    <string name="pt_blx_boot">Set on boot</string>
+    <string name="ps_blx_boot">Apply the amount above at boot</string>
+    <string name="blx_title">Charge limit:</string>
+    <!-- dsync -->
+    <string name="dsync_info">Dynamic FSync feature\nAuthor Paul Reioux (faux123)</string>
+    <string name="prefcat_dsync">DYNAMIC FSYNC</string>
+    <string name="ps_dsync">Setting will be restored on reboot</string>
+    <string name="pt_dsync">Dynamic Fsync</string>
+    <!-- bl_timeout -->
+    <string name="prefcat_bltimeout">BACKLIGHT TIMEOUT</string>
+    <string name="ps_bltimeout">%s ms</string>
+    <string name="bltimeout_title">Backlight timeout</string>
+    <!-- bl_touch -->
+    <string name="prefcat_bltouch">BACKLIGHT ON TOUCHSCREEN</string>
+    <string name="pt_bltouch">Backlight on touchscreen</string>
+    <!-- pfk -->
+    <string name="pfk_info">Phantom Key Presses Filter module ver. %s\nAuthor Cristoforo Cataldo (Christopher83)</string>
+    <string name="prefcat_pfk">PHANTOM KEY PRESSES FILTER</string>
+    <string name="pt_home_enabled">Home key filter</string>
+    <string name="ps_home_enabled">Ignored key pressed: %s</string>
+    <string name="home_allowed_irq_title">Max allowed interrupts</string>
+    <string name="home_report_wait_title">Report wait time</string>
+    <string name="pt_menuback_enabled">Menu/Back keys filter</string>
+    <string name="ps_menuback_enabled">Ignored key pressed: %s</string>
+    <string name="menuback_interrupt_checks_title">Interrupts checks</string>
+    <string name="menuback_first_err_wait_title">First error wait time</string>
+    <string name="menuback_last_err_wait_title">Last error wait time</string>
+    <string name="ps_pfk_set_on_boot">If enabled will restore all pkf settings on reboot</string>
+    <!-- dynamic write back -->
+    <string name="dynamic_writeback_info">Dynamic Dirty Page Writebacks feature\nAuthor Cristoforo Cataldo (Christopher83)</string>
+    <string name="dynamic_write_back_title">DYNAMIC DIRTY PAGE WRITEBACKS</string>
+    <string name="pt_dynamic_write_back">Dynamic Dirty Writeback</string>
+    <string name="dynamic_writeback_active_title">Dirty Writeback Active centisecs</string>
+    <string name="dynamic_writeback_suspend_title">Dirty Writeback Suspend centisecs</string>
+    <!--  -->
+    <string name="size_25_mb">25mb</string>
+    <string name="size_50_mb">50mb</string>
+    <string name="size_75_mb">75mb</string>
+    <string name="size_80_mb">80mb</string>
+    <string name="size_100_mb">100mb</string>
+    <string name="size_128_kb">128kb</string>
+    <string name="size_256_kb">256kb</string>
+    <string name="size_512_kb">512kb</string>
+    <string name="size_1024_kb">1024kb</string>
+    <string name="size_2048_kb">2048kb</string>
+    <string name="size_4096_kb">4096kb</string>
+    <!-- Voltage control -->
+    <string name="volt_info">ATTENTION!\nBefore activating Set on boot, make sure that the values ​​entered do not exceed limits or risk the phone to freeze.</string>
+    <string name="ps_volt_mhz_voltage">" Hz"</string>
+    <string name="ps_volt_save">"Save"</string>
+    <string name="ps_volt_current_voltage">"Current voltage: "</string>
+    <string name="ps_volt_setting_to_apply">"Setting to apply: "</string>
+    <string name="pt_volt_control">Voltage control</string>
+    <string name="ps_volt_control">Set voltages for each frequency</string>
+    <string name="apply_values">Apply values</string>
+    <string name="freq">Frequency</string>
+    <string name="current">mV current</string>
+    <string name="saved">mV saved</string>
+    <string name="not_supported">Your kernel does not support voltage control</string>
+    <!-- VM settings -->
+    <string name="ps_vm_set_on_boot">If enabled will restore all vm settings on reboot</string>
+    <string name="dirty_ratio_title">Dirty ratio</string>
+    <string name="dirty_ratio_summary">A higher ratio means lower CPU but slower app startups</string>
+    <string name="dirty_background_title">Dirty background ratio</string>
+    <string name="dirty_expire_title">Dirty expire centisecs</string>
+    <string name="dirty_writeback_title">Dirty writeback centisecs</string>
+    <string name="min_free_title">Minfree kbytes</string>
+    <string name="overcommit_title">Overcommit ratio</string>
+    <string name="swappiness_title">Swappiness</string>
+    <string name="vfs_title">VFS cache pressure</string>
+    <!-- Time in state -->
+    <string name="time_in_state">TIME IN STATE</string>
+    <string name="unused_cpu_states">UNUSED CPU STATES</string>
+    <string name="total_state_time">TOTAL STATE TIME</string>
+    <string name="no_states_file_found">No states file found. Are you sure your phone is
+        compatible?\n\nIf you are running a custom ROM or kernel, try
+        contacting its developer to inform him that the states file is not
+        readable.</string>
+    <string name="deep_sleep">"Deep Sleep"</string>
+    <!-- CPU info -->
+    <string name="kernel_info">LINUX KERNEL INFORMATION</string>
+    <string name="cpu_info">CPU INFORMATION</string>
+    <string name="mem_info">MEMORY INFORMATION</string>
+    <string name="first_run_title">First check for root</string>
+    <string name="su_success_title">Success!</string>
+    <string name="su_failed_title">Oops!</string>
+    <string name="first_run_message">The application needs to check for root access and
+        busybox. Press OK to continue. Cancel if you would not like to grant
+        root access.</string>
+    <string name="su_success_message">Performance Control was able to get root access and
+        find busybox. Ready to rock!</string>
+    <string name="su_cancel_message">You have chosen to not check for root and busybox.
+        Most options will not work without root access. Sorry!</string>
+    <string name="su_failed_su_or_busybox">Root access failed or busybox was not found. Most
+        options will not work without root access. Sorry!</string>
+
+    <!-- Tools -->
+    <string name="prefcat_sh">CUSTOM SHELL COMMAND</string>
+    <string name="sh_title">Edit shell command</string>
+    <string name="ps_sh">Command will be executed at boot.</string>
+    <string name="sh_msg">Leave blank for no operation.</string>
+    <string name="clear">Clear</string>
+    <string name="yes">Yes</string>
+    <string name="wait">Please wait…</string>
+    <string name="prefcat_wipe_cache">CACHE and DALVIK CACHE</string>
+    <string name="wipe_cache_title">Wipe cache and dalvik cache</string>
+    <string name="ps_wipe_cache">Cache partition: %s</string>
+    <string name="wipe_cache_msg">At the end, the system will reboot. Continue?</string>
+    <string name="prefcat_flash_img">FLASH IMG FILE</string>
+    <string name="kernel_img_title">Flash KERNEL</string>
+    <string name="ps_kernel_img">Flash boot.img files as kernel. Can choose individual boot.img file or any zip file that contains boot.img</string>
+    <string name="recovery_img_title">Flash RECOVERY</string>
+    <string name="ps_recovery_img">Flash recovery.img files as recovery. Can choose individual recovery.img file or any zip file that contains recovery.img</string>
+    <string name="btn_choose">Choose %s</string>
+    <string name="unsupported_info">Your device is not supported.</string>
+    <string name="flash_info">will be flashed on partition\n%s\n as</string>
+    <string name="dir_parent">&lt;Parent DIR&gt;</string>
+    <string name="dir">&lt;DIR&gt;</string>
+    <string name="bkexit">Press again to exit</string>
+    <string name="prefcat_residual_files">CLEAN RESIDUAL FILES</string>
+    <string name="residual_files_title">Clean residual files</string>
+    <string name="btncleanall">Clean all</string>
+    <string name="clean_files_msg">Residual files from %s will be deleted. Continue?</string>
+    <string name="filesstr">file(s)</string>
+    <string name="no_residuals">No residual files</string>
+    <string name="prefcat_optim_db">OPTIMIZE DBs</string>
+    <string name="optim_db_title">Optimize Databases</string>
+    <string name="ps_optim_db">This will optimize databases by using SQL command VACUUM.</string>
+
+    <string-array name="residual_info">
+        <item>Contains Android system log files</item>
+        <item>Contains log files from crashed apps</item>
+        <item>Contains constantly generated log files</item>
+        <item>Contains statistics about what apps you started</item>
+        <item>Contains traces from \'application not responding\' events</item>
+        <item>Contains temporary files</item>
+    </string-array>
+
+    <string name="prefcat_fix_perms">FIX PERMISSIONS</string>
+    <string name="fix_perms_title">Fix permissions</string>
+    <string name="fix_perms_msg">Operation may take several minutes. Continue?</string>
+    <string name="preflogg_fix_perms">Enable logging</string>
+    <string name="free">free %s</string>
+    <string name="used">used %s</string>
+
+    <!-- 2.1.0 -->
+    <string name="verify">Verifying…</string>
+    <string name="bad_zip">%s not found in zip file !</string>
+    <string name="closebtn">Close</string>
+    <string name="delallbtn">Delete all</string>
+    <string name="del_file_msg">%s will be deleted. Continue?</string>
+
+    <string-array name="batt_status">
+        <item>Unknown</item>
+        <item>Unknown</item>
+        <item>Charging</item>
+        <item>Discharging</item>
+        <item>Full</item>
+        <item>Not charging</item>
+    </string-array>
+    <!-- 2.1.2 -->
+    <!-- ksm -->
+    <string name="prefcat_ksm">KERNEL SAMEPAGE MERGING</string>
+    <string name="pt_run_ksm">Enable KSM</string>
+    <string name="ksm_adv_title">Settings</string>
+    <string name="ksm_fullscans">Full Scans:</string>
+    <string name="ksm_pagshared">Pages Shared:</string>
+    <string name="ksm_pagsharing">Pages Sharing:</string>
+    <string name="ksm_pagunshared">Pages Unshared:</string>
+    <string name="ksm_pagvolatile">Pages Volatile:</string>
+    <string name="ksm_pagtoscan">Pages to Scan:</string>
+    <string name="ksm_sleep">Sleep (ms):</string>
+
+    <!-- freezer -->
+    <string name="prefcat_freezer">FREEZE or DEFROST PACKAGES</string>
+    <string name="pt_freeze">Freeze Package</string>
+    <string name="pt_unfreeze">Defrost Package</string>
+    <string name="ps_freeze">List of all installed packages</string>
+    <string name="ps_unfreeze">List of frozen packages</string>
+    <string name="mt_system_packs">System Packages</string>
+    <string name="mt_user_packs">User Packages</string>
+    <string name="freeze_msg">%s will be frozen. Continue?</string>
+    <string name="unfreeze_msg">%s will be defrosted. Continue?</string>
+
+    <!-- zRam -->
+    <string name="prefcat_zram">zRAM</string>
+    <string name="pt_run_zram">Enable zRam</string>
+    <string name="zram_set_title">Settings</string>
+    <!-- 2.1.3 -->
+    <string name="ps_zram">Compress memory for increased virtual capacity</string>
+    <string name="mt_gov_ctrl">Governor Settings</string>
+
+    <!-- PC Settings -->
+    <string name="pt_use_light_theme">Use light theme</string>
+    <string name="ps_use_light_theme">If checked, Performance Control will use a Holo light theme</string>
+    <string name="pt_widget_bg_color">Widget bg color</string>
+    <string name="pt_widget_text_color">Widget text color</string>
+    <string name="pt_ver">"Version - "</string>
+    <!-- Color picker -->
+    <string name="dialog_color_picker">Color Picker</string>
+    <string name="press_color_to_apply">Press on Color to apply</string>
+    <string name="arrow_right">→</string>
+    <string name="arrow_down">↓</string>
+    <string name="hex">Hex:</string>
+    <string name="hex_hint">#FF000000</string>
+    <string name="set">Set</string>
+    <string name="ics_color">Holo</string>
+
+    <!-- Drawer -->
+    <string name="navigation_drawer_toggle">Toggle Drawer</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="navigation_toggle_drawer">Switch to Drawer</string>
+    <string name="navigation_toggle_tabbed">Switch to Tabbed</string>
+    
+    
+    <!-- Performance Settings | Warning dialog -->
+    <string name="performance_settings_warning_title">Proceed with Caution</string>
+    <string name="performance_settings_warning_header">Warning</string>
+
+    <!-- PropModder -->
+    <string name="propmodder_title">Build.prop Mods</string>
+    <string name="propmodder_switches">Switches</string>
+    <string name="buildprop_title">build.prop mods (reboot required)</string>
+    <string name="buildprop_settings_warning">These settings are for experimentation and any changes made to them have the potential to cause instability, crashes, data loss or hardware failures.</string>
+    <string name="nonprop_cat_title">Mods involving init.d script</string>
+    <string name="pref_wifi_scan_interval_title">Wifi scan interval</string>
+    <string name="pref_wifi_scan_interval_summary">The time between wifi scans when no stored access points are available</string>
+    <string name="pref_wifi_scan_alt_summary">Time between wifi scans: %s</string>
+    <string name="pref_max_events_title">Windows Manager\'s max events per second</string>
+    <string name="pref_max_events_summary">This is a runtime value that controls the number of events the system will allow in a second</string>
+    <string name="pref_max_events_alt_summary">Max number of system events: %s</string>
+    <string name="pref_ring_delay_title">Telephone ringer delay</string>
+    <string name="pref_ring_delay_summary">The amount of time from when the system registers an incoming phone call until the ringer</string>
+    <string name="pref_ring_delay_alt_summary">Incoming call Delay: %s</string>
+    <string name="pref_vm_heapsize_title">Dalvik cache heapsize</string>
+    <string name="pref_vm_heapsize_summary">This controls the size of the cache the Dalvik VM has access to</string>
+    <string name="pref_vm_heapsize_alt_summary">Dalvik VM cache size: %s</string>
+    <string name="showbuild_title">Show The Build.Prop</string>
+    <string name="buildprop_summary">Find out whats in there</string>
+    <string name="showbuild_dialog">Displaying /system/Build.Prop</string>
+    <string name="showbuild_loading">Loading build.prop\u2026</string>
+    <string name="showbuild_error">Error loading build.prop\u2026</string>
+    <string name="showbuild_unknown">Unknown</string>
+    <string name="showbuild_version">Version</string>
+    <string name="showbuild_label">We should look because knowing is half the battle</string>
+    <string name="pref_fast_up_title">HSUPA upload speed hack</string>
+    <string name="pref_fast_up_summary">*WARNING* if you change this value it will add the needed values to your build.prop if they are not already present</string>
+    <string name="pref_fast_up_alt_summary">Fast up found active: %s</string>
+    <string name="pref_prox_delay_title">Proximity sensor delay</string>
+    <string name="pref_prox_delay_summary">When you are in-call screen is off when the device moves away from your face this delay value controls how long before screen turns on</string>
+    <string name="pref_prox_delay_alt_summary">Proximity sensor set to: %s</string>
+    <string name="pref_mod_version_title">Change your Build Number</string>
+    <string name="pref_mod_version_summary">This is astetic and doesn\'t improve the system</string>
+    <string name="pref_mod_version_alt_summary">Build Number: %s</string>
+    <string name="pref_mod_version_default"></string>
+    <string name="pref_sleep_title">PM Sleep mode</string>
+    <string name="pref_sleep_summary">Modify Nighttime sleep policy</string>
+    <string name="pref_sleep_alt_summary">Current Sleep Mode: %s</string>
+    <string name="pref_jit_title">Just In Time Complier</string>
+    <string name="pref_jit_summary">Enables/Disables JIT complier</string>
+    <string name="pref_tcp_stack_title">Optimize TCP Stack</string>
+    <string name="pref_tcp_stack_summary">Modify the buffer-size for better performance</string>
+    <string name="pref_g_speed_title">3G Speed Hack</string>
+    <string name="pref_g_speed_summary">Uncap 3g speed</string>
+    <string name="pref_gpu_title">GPU Acceleration</string>
+    <string name="pref_gpu_summary">Enable hardware acceleration where the GPU controls the UI instead of the CPU</string>
+	<string name="pref_lcd_title">Change LCD density</string>
+	<string name="pref_lcd_summary">Set your desired LCD density</string>
+	<string name="pref_lcd_default">480</string>
+	<string name="pref_lcd_alt_summary">Screen density: %s</string>
+    
+    <!-- Init.d -->
+    <string name="header_summary_init_d">@null</string>
+    <string name="init_d_title">Init.d Tweaks</string>
+    <string name="pt_general">General</string>
+    <string name="pt_zipalign_apks">Zipalign apps</string>
+    <string name="ps_zipalign_apks">Zipalign any unaligned apps on each boot</string>
+    <string name="pt_fix_permissions">Fix permissions</string>
+    <string name="ps_fix_permissions">Fix permissions on apps and their data on each boot</string>
+    <string name="pt_enable_sysctl">Enable sysctl</string>
+    <string name="ps_enable_sysctl">Enable sysctl tweaks at boot</string>
+    <string name="pt_free_mem">Free memory</string>
+    <string name="ps_free_mem">Set minfree values at boot</string>
+    <string name="pt_clear_data_cache">Clear cache</string>
+    <string name="ps_clear_data_cache">Clear application cache files each boot</string>
+    <string name="pt_enable_cron">Enable scheduled tasks</string>
+    <string name="ps_enable_cron">Enable scheduled cron jobs</string>
+    <string name="pt_sd_boost">Enable SD boost</string>
+    <string name="ps_sd_boost">Enable/disable SD card speed boost</string>
+    <string name="pt_file_system_speedups">File system speedup</string>
+    <string name="ps_file_system_speedups">Speed up file systems at boot</string>
+    <string name="pt_foreground_app_mem">Foreground app mem</string>
+    <string name="pt_visible_app_mem">Visible app mem</string>
+    <string name="pt_perceptible_app_mem">Perceptible app mem</string>
+    <string name="pt_heavy_weight_app_mem">Heavy weight app mem</string>
+    <string name="pt_secondary_server_mem">Secondary server app mem</string>
+    <string name="pt_backup_app_mem">Backup app mem</string>
+    <string name="pt_home_app_mem">Home app mem</string>
+    <string name="pt_hidden_app_mem">Hidden app mem</string>
+    <string name="pt_empty_app_mem">Empty app mem</string>
+    <string name="pt_read_ahead_kb">Read ahead value</string>
+    <string name="pt_minfree_values">Minfree values</string>
+    <string name="pt_battery">Enable battery tweaks</string>
+    <string name="ps_battery">Enable/disable battery saving tweaks</string>
+    <string name="pt_touch">Enable touch tweaks</string>
+    <string name="ps_touch">Enable/disable touchscreen tweaks</string>
+    <string name="pt_minfree">Enable minfree values</string>
+    <string name="ps_minfree">Enable/disable minfree tweaks</string>
+    <string name="pt_gpurender">Enable gpu render</string>
+    <string name="ps_gpurender">Enable/disable gpu rendering tweaks</string>
+    <string name="pt_sleepers">Enable sleeping</string>
+    <string name="ps_sleepers">Enable/disable sleeping tweaks</string>
+    <string name="pt_journalism">Enable journalism</string>
+    <string name="ps_journalism">Enable/disable journalism tweaks</string>
+    <string name="pt_sqlite3">Enable sqlite3</string>
+    <string name="ps_sqlite3">Enable/disable sqlite3 tweaks</string>
+    <string name="pt_wifisleep">Enable wifi sleep</string>
+    <string name="ps_wifisleep">Enable/disable wifi sleep tweaks</string>
+    <string name="pt_iostats">Enable iostats</string>
+    <string name="ps_iostats">Enable/disable iostats</string>
+    <string name="pt_setrenice">Enable setrenice</string>
+    <string name="ps_setrenice">Enable/disable setrenice</string>
+    <string name="pt_tweaks">Enable super tweaks</string>
+    <string name="ps_tweaks">Enable/disable super tweaks</string>
+    <string name="pt_speedy_modified">Enable speedy modified</string>
+    <string name="ps_speedy_modified">Enable/disable Speedy modified tweaks</string>
+    <string name="pt_loopy_smoothness_tweak">Enable loopy smoothness</string>
+    <string name="ps_loopy_smoothness_tweak">Enable/disable loopy smoothness tweaks</string>
+    <string name="pt_init_d_credits">Developed by:</string>
+    <string name="ps_init_d_credits">Jared Rummler (JRummy16)</string>
+    <string name="dt_init_d_error">Init.d error</string>
+    <string name="dm_init_d_error">It looks like init.d isn\'t setup properly. Blame Kenneth!</string>
+    <string name="db_exit">Exit</string>
+    
+    <!-- PropModder -->
+    <string-array name="entries_wifi_scan" translatable="false">
+        <item>0</item>
+        <item>15</item>
+        <item>30</item>
+        <item>45</item>
+        <item>60</item>
+        <item>75</item>
+        <item>90</item>
+        <item>105</item>
+        <item>120</item>
+        <item>135</item>
+        <item>150</item>
+        <item>165</item>
+        <item>180</item>
+        <item>195</item>
+        <item>210</item>
+        <item>225</item>
+        <item>240</item>
+        <item>255</item>
+        <item>270</item>
+        <item>285</item>
+        <item>300</item>
+        <item>315</item>
+        <item>330</item>
+        <item>345</item>
+        <item>360</item>
+        <item>375</item>
+        <item>390</item>
+        <item>405</item>
+        <item>420</item>
+    </string-array>
+
+    <string-array name="entries_lcd_density" translatable="false">
+        <item>240</item>
+        <item>242</item>
+        <item>244</item>
+        <item>246</item>
+        <item>248</item>
+        <item>250</item>
+        <item>252</item>
+        <item>254</item>
+        <item>256</item>
+        <item>258</item>
+        <item>260</item>
+        <item>262</item>
+        <item>264</item>
+        <item>266</item>
+        <item>268</item>
+        <item>270</item>
+        <item>272</item>
+        <item>274</item>
+        <item>276</item>
+        <item>278</item>
+        <item>280</item>
+        <item>282</item>
+        <item>284</item>
+        <item>285</item>
+        <item>286</item>
+        <item>288</item>
+        <item>290</item>
+        <item>292</item>
+        <item>294</item>
+        <item>296</item>
+        <item>298</item>
+        <item>300</item>
+        <item>302</item>
+        <item>304</item>
+        <item>306</item>
+        <item>308</item>
+        <item>310</item>
+        <item>312</item>
+        <item>314</item>
+        <item>316</item>
+        <item>318</item>
+        <item>320</item>
+        <item>322</item>
+        <item>324</item>
+        <item>326</item>
+        <item>328</item>
+        <item>330</item>
+        <item>332</item>
+        <item>334</item>
+        <item>336</item>
+        <item>338</item>
+        <item>340</item>
+        <item>342</item>
+        <item>344</item>
+        <item>346</item>
+        <item>348</item>
+        <item>350</item>
+        <item>352</item>
+        <item>354</item>
+        <item>356</item>
+        <item>358</item>
+        <item>360</item>
+    </string-array>
+
+    <string-array name="entries_max_events" translatable="false">
+        <item>60</item>
+        <item>65</item>
+        <item>70</item>
+        <item>75</item>
+        <item>80</item>
+        <item>85</item>
+        <item>90</item>
+        <item>95</item>
+        <item>100</item>
+        <item>105</item>
+        <item>110</item>
+        <item>115</item>
+        <item>120</item>
+        <item>160</item>
+        <item>165</item>
+        <item>170</item>
+        <item>175</item>
+        <item>180</item>
+        <item>185</item>
+        <item>190</item>
+        <item>195</item>
+        <item>200</item>
+        <item>205</item>
+        <item>210</item>
+        <item>215</item>
+        <item>220</item>
+        <item>225</item>
+        <item>230</item>
+        <item>235</item>
+        <item>240</item>
+        <item>245</item>
+        <item>250</item>
+        <item>260</item>
+        <item>265</item>
+        <item>270</item>
+        <item>275</item>
+        <item>280</item>
+        <item>290</item>
+        <item>295</item>
+        <item>300</item>
+    </string-array>
+
+    <string-array name="entries_ring_delay" translatable="false">
+        <item>0</item>
+        <item>50</item>
+        <item>100</item>
+        <item>200</item>
+        <item>300</item>
+        <item>400</item>
+        <item>500</item>
+        <item>600</item>
+        <item>700</item>
+        <item>800</item>
+        <item>900</item>
+        <item>1000</item>
+        <item>1050</item>
+        <item>1100</item>
+        <item>1200</item>
+        <item>1300</item>
+        <item>1400</item>
+        <item>1500</item>
+        <item>1600</item>
+        <item>1700</item>
+        <item>1800</item>
+        <item>1900</item>
+        <item>2000</item>
+        <item>2050</item>
+        <item>2100</item>
+        <item>2200</item>
+        <item>2300</item>
+        <item>2400</item>
+        <item>2500</item>
+        <item>3000</item>
+    </string-array>
+
+    <string-array name="entries_vm_heapsize" translatable="false">
+        <item>16m</item>
+        <item>24m</item>
+        <item>28m</item>
+        <item>32m</item>
+        <item>36m</item>
+        <item>42m</item>
+        <item>48m</item>
+        <item>52m</item>
+        <item>56m</item>
+        <item>64m</item>
+        <item>68m</item>
+        <item>72m</item>
+        <item>76m</item>
+        <item>84m</item>
+        <item>96m</item>
+        <item>128m</item>
+        <item>160m</item>
+        <item>192m</item>
+        <item>224m</item>
+        <item>256m</item>
+        <item>320m</item>
+        <item>384m</item>
+        <item>448m</item>
+        <item>512m</item>
+        <item>576m</item>
+        <item>640m</item>
+        <item>704m</item>
+        <item>768m</item>
+    </string-array>
+
+    <string-array name="entries_fast_up_explain">
+        <item>Remove</item>
+        <item>HSUPA Disabled (Capped)</item>
+        <item>HSUPA Enabled</item>
+        <item>HSUPA Enabled (Uncapped)</item>
+    </string-array>
+
+    <string-array name="entries_fast_up" translatable="false">
+        <item>disable</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+    <string-array name="entries_prox_delay_explain">
+        <item>Remove</item>
+        <item>0</item>
+        <item>50</item>
+        <item>75</item>
+        <item>125</item>
+        <item>150</item>
+        <item>175</item>
+        <item>200</item>
+        <item>225</item>
+        <item>250</item>
+        <item>275</item>
+        <item>300</item>
+        <item>325</item>
+        <item>350</item>
+        <item>375</item>
+        <item>400</item>
+        <item>425</item>
+        <item>450</item>
+        <item>475</item>
+        <item>500</item>
+    </string-array>
+
+    <string-array name="entries_prox_delay">
+        <item>disable</item>
+        <item>0</item>
+        <item>50</item>
+        <item>75</item>
+        <item>125</item>
+        <item>150</item>
+        <item>175</item>
+        <item>200</item>
+        <item>225</item>
+        <item>250</item>
+        <item>275</item>
+        <item>300</item>
+        <item>325</item>
+        <item>350</item>
+        <item>375</item>
+        <item>400</item>
+        <item>425</item>
+        <item>450</item>
+        <item>475</item>
+        <item>500</item>
+    </string-array>
+
+    <string-array name="entries_sleep_explain">
+        <item>Disable</item>
+        <item>Power Collapse Suspend</item>
+        <item>Power Collapse (Best)</item>
+        <item>Apps Sleep</item>
+        <item>Slow Clock</item>
+        <item>Wait For Interrupt</item>
+    </string-array>
+
+    <string-array name="entries_sleep">
+        <item>disable</item>
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
+</resources>

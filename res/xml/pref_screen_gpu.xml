@@ -1,0 +1,13 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:key="key_root" >
+
+    <PreferenceCategory
+        android:key="key_gpu_category"
+        android:title="@string/gpu_category" >
+        <com.dsht.kerneltweaker.CustomListPreference
+            android:key="key_gpu_frequency"
+            android:summary="@string/gpu_freq_desc"
+            android:title="@string/gpu_freq_title" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

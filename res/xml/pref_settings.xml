@@ -1,0 +1,169 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" >
+
+    <PreferenceCategory android:title="Debug options" >
+        <CheckBoxPreference
+            android:key="key_debug"
+            android:summary="Values are not applied on boot? Enable this option! The app will create a file on the external storage while device boots. Only app related data will be collected."
+            android:title="Enable debugging" />
+
+        <Preference
+            android:key="key_slog"
+            android:summary="Take a look at log file saved on external storage"
+            android:title="Read Log File" />
+        <Preference
+            android:key="key_runlog"
+            android:summary="If you want to test if all works tap here! This option will not reboot your phone.\n\nNOTE: You must have at least one item set on boot!"
+            android:title="Run Boot commands" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="Theme options" >
+        <CheckBoxPreference
+            android:key="key_theme"
+            android:summary="Use Holo Light with Dark ActionBar Theme"
+            android:title="Use Light theme" />
+        <CheckBoxPreference
+            android:key="key_enable_global"
+            android:summary="Change color for every tab and menu"
+            android:title="Use Global color" />
+
+        <it.gmariotti.android.example.colorpicker.calendarstock.ColorPickerPreference
+            android:defaultValue="@android:color/white"
+            android:key="key_global_color"
+            android:negativeButtonText="@null"
+            android:positiveButtonText="@null"
+            android:summary="Change titles colors"
+            android:title="Titles color"
+            app:cal_itemLayout="@layout/calendar_grid_item_color"
+            app:cal_numColumns="5" />
+
+        <CheckBoxPreference
+            android:key="key_enable_personal"
+            android:summary="Select your preferred color for every tab"
+            android:title="Use Personal colors" />
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:key="key_personal_category"
+        android:title="Personal colors" >
+        <it.gmariotti.android.example.colorpicker.calendarstock.ColorPickerPreference
+            android:defaultValue="@android:color/white"
+            android:key="key_color_stats"
+            android:negativeButtonText="@null"
+            android:positiveButtonText="@null"
+            android:title="CPU stats"
+            app:cal_itemLayout="@layout/calendar_grid_item_color"
+            app:cal_numColumns="5" />
+        <it.gmariotti.android.example.colorpicker.calendarstock.ColorPickerPreference
+            android:defaultValue="@android:color/white"
+            android:key="key_color_info"
+            android:negativeButtonText="@null"
+            android:positiveButtonText="@null"
+            android:title="CPU info"
+            app:cal_itemLayout="@layout/calendar_grid_item_color"
+            app:cal_numColumns="5" />
+        <it.gmariotti.android.example.colorpicker.calendarstock.ColorPickerPreference
+            android:defaultValue="@android:color/white"
+            android:key="key_color_cpu"
+            android:negativeButtonText="@null"
+            android:positiveButtonText="@null"
+            android:title="CPU Params"
+            app:cal_itemLayout="@layout/calendar_grid_item_color"
+            app:cal_numColumns="5" />
+        <it.gmariotti.android.example.colorpicker.calendarstock.ColorPickerPreference
+            android:defaultValue="@android:color/white"
+            android:key="key_color_gpu"
+            android:negativeButtonText="@null"
+            android:positiveButtonText="@null"
+            android:title="GPU Params"
+            app:cal_itemLayout="@layout/calendar_grid_item_color"
+            app:cal_numColumns="5" />
+        <it.gmariotti.android.example.colorpicker.calendarstock.ColorPickerPreference
+            android:defaultValue="@android:color/white"
+            android:key="key_color_uv"
+            android:negativeButtonText="@null"
+            android:positiveButtonText="@null"
+            android:title="UV Table"
+            app:cal_itemLayout="@layout/calendar_grid_item_color"
+            app:cal_numColumns="5" />
+        <it.gmariotti.android.example.colorpicker.calendarstock.ColorPickerPreference
+            android:defaultValue="@android:color/white"
+            android:key="key_color_kernel"
+            android:negativeButtonText="@null"
+            android:positiveButtonText="@null"
+            android:title="Kernel"
+            app:cal_itemLayout="@layout/calendar_grid_item_color"
+            app:cal_numColumns="5" />
+        <it.gmariotti.android.example.colorpicker.calendarstock.ColorPickerPreference
+            android:defaultValue="@android:color/white"
+            android:key="key_color_lmk"
+            android:negativeButtonText="@null"
+            android:positiveButtonText="@null"
+            android:title="Low Memory Killer"
+            app:cal_itemLayout="@layout/calendar_grid_item_color"
+            app:cal_numColumns="5" />
+        <it.gmariotti.android.example.colorpicker.calendarstock.ColorPickerPreference
+            android:defaultValue="@android:color/white"
+            android:key="key_color_vm"
+            android:negativeButtonText="@null"
+            android:positiveButtonText="@null"
+            android:title="Virtual Machine"
+            app:cal_itemLayout="@layout/calendar_grid_item_color"
+            app:cal_numColumns="5" />
+        <it.gmariotti.android.example.colorpicker.calendarstock.ColorPickerPreference
+            android:defaultValue="@android:color/white"
+            android:key="key_color_review"
+            android:negativeButtonText="@null"
+            android:positiveButtonText="@null"
+            android:title="Review Items"
+            app:cal_itemLayout="@layout/calendar_grid_item_color"
+            app:cal_numColumns="5" />
+        <it.gmariotti.android.example.colorpicker.calendarstock.ColorPickerPreference
+            android:defaultValue="@android:color/white"
+            android:key="key_color_file"
+            android:negativeButtonText="@null"
+            android:positiveButtonText="@null"
+            android:title="File Manager"
+            app:cal_itemLayout="@layout/calendar_grid_item_color"
+            app:cal_numColumns="5" />
+        <it.gmariotti.android.example.colorpicker.calendarstock.ColorPickerPreference
+            android:defaultValue="@android:color/white"
+            android:key="key_color_backup"
+            android:negativeButtonText="@null"
+            android:positiveButtonText="@null"
+            android:title="Backup"
+            app:cal_itemLayout="@layout/calendar_grid_item_color"
+            app:cal_numColumns="5" />
+        <it.gmariotti.android.example.colorpicker.calendarstock.ColorPickerPreference
+            android:defaultValue="@android:color/white"
+            android:key="key_color_recovery"
+            android:negativeButtonText="@null"
+            android:positiveButtonText="@null"
+            android:title="Recovery"
+            app:cal_itemLayout="@layout/calendar_grid_item_color"
+            app:cal_numColumns="5" />
+        <it.gmariotti.android.example.colorpicker.calendarstock.ColorPickerPreference
+            android:defaultValue="@android:color/white"
+            android:key="key_color_prop"
+            android:negativeButtonText="@null"
+            android:positiveButtonText="@null"
+            android:title="Build.Prop"
+            app:cal_itemLayout="@layout/calendar_grid_item_color"
+            app:cal_numColumns="5" />
+        <it.gmariotti.android.example.colorpicker.calendarstock.ColorPickerPreference
+            android:defaultValue="@android:color/white"
+            android:key="key_color_init"
+            android:negativeButtonText="@null"
+            android:positiveButtonText="@null"
+            android:title="Init.d"
+            app:cal_itemLayout="@layout/calendar_grid_item_color"
+            app:cal_numColumns="5" />
+        <it.gmariotti.android.example.colorpicker.calendarstock.ColorPickerPreference
+            android:defaultValue="@android:color/white"
+            android:key="key_color_blur"
+            android:negativeButtonText="@null"
+            android:positiveButtonText="@null"
+            android:title="WP Blur"
+            app:cal_itemLayout="@layout/calendar_grid_item_color"
+            app:cal_numColumns="5" />
+    </PreferenceCategory>
+
+</PreferenceScreen>
