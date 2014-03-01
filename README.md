@@ -26,4 +26,4 @@ Some features are from Open Source projects:
 LICENSE
 =======
 
-**KernelTweaker source is under license GPL V3**
+**KernelTweaker source is under license GPL V3. ( [LICENSE.txt] (https://github.com/cesco89/android-kernel-tweaker/blob/master/LICENSE.txt) )**
