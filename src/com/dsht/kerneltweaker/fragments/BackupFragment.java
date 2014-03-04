@@ -184,14 +184,6 @@ public class BackupFragment extends Fragment implements OnClickListener, OnItemC
 					value +=".img";
 				}
 				backup(boot, value);
-				/*if(boot) {
-					CMDProcessor.runSuCommand("dd if=/dev/block/platform/msm_sdcc.1/by-name/boot of="+backupDir.getAbsolutePath()+"/"+value);
-				}else {
-					CMDProcessor.runSuCommand("dd if=/dev/block/platform/msm_sdcc.1/by-name/recovery of="+backupDir.getAbsolutePath()+"/"+value);
-				}
-				listFiles.clear();
-				listFiles = list(backupDir.listFiles());
-				mAdapter.notifyDataSetChanged(); */
 			}
 		} );
 		AlertDialog dialog = builder.create();
