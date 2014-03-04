@@ -11,6 +11,7 @@ import com.dsht.kerneltweaker.MainActivity;
 import com.dsht.kerneltweaker.R;
 import com.dsht.kerneltweaker.SwipeDismissListViewTouchListener;
 import com.dsht.kerneltweaker.SwipeDismissListViewTouchListener.DismissCallbacks;
+import com.dsht.kernetweaker.cmdprocessor.CMDProcessor;
 import com.dsht.settings.SettingsFragment;
 import com.stericson.RootTools.RootTools;
 import com.stericson.RootTools.exceptions.RootDeniedException;
@@ -18,9 +19,11 @@ import com.stericson.RootTools.execution.CommandCapture;
 
 import android.app.AlertDialog;
 import android.app.Fragment;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.Gravity;
@@ -180,26 +183,15 @@ public class BackupFragment extends Fragment implements OnClickListener, OnItemC
 				if(!value.contains(".img")){
 					value +=".img";
 				}
-				CommandCapture command = null;
-				if(boot) {
-					command = new CommandCapture(0,"dd if=/dev/block/platform/msm_sdcc.1/by-name/boot of="+backupDir.getAbsolutePath()+"/"+value);
+				backup(boot, value);
+				/*if(boot) {
+					CMDProcessor.runSuCommand("dd if=/dev/block/platform/msm_sdcc.1/by-name/boot of="+backupDir.getAbsolutePath()+"/"+value);
 				}else {
-					command = new CommandCapture(0,"dd if=/dev/block/platform/msm_sdcc.1/by-name/recovery of="+backupDir.getAbsolutePath()+"/"+value);
+					CMDProcessor.runSuCommand("dd if=/dev/block/platform/msm_sdcc.1/by-name/recovery of="+backupDir.getAbsolutePath()+"/"+value);
 				}
-				try {
-					RootTools.getShell(true).add(command);
-					mAdapter.add(new File(backupDir.getAbsolutePath()+"/"+value));
-
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (TimeoutException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (RootDeniedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				listFiles.clear();
+				listFiles = list(backupDir.listFiles());
+				mAdapter.notifyDataSetChanged(); */
 			}
 		} );
 		AlertDialog dialog = builder.create();
@@ -274,6 +266,40 @@ public class BackupFragment extends Fragment implements OnClickListener, OnItemC
 		}
 	}
 
+	public void backup(final boolean boot, final String value) {
+		class LongOperation extends AsyncTask<String, Void, String> {
 
+			ProgressDialog pd;
+
+			@Override
+			protected void onPreExecute() {
+
+				pd = new ProgressDialog(mContext);
+				pd.setIndeterminate(true);
+				pd.setMessage("Backing up...Please wait");
+				pd.setCancelable(false);
+				pd.show();
+
+			}
+
+			@Override
+			protected String doInBackground(String... params) {
+				if(boot) {
+					CMDProcessor.runSuCommand("dd if=/dev/block/platform/msm_sdcc.1/by-name/boot of="+backupDir.getAbsolutePath()+"/"+value);
+				}else {
+					CMDProcessor.runSuCommand("dd if=/dev/block/platform/msm_sdcc.1/by-name/recovery of="+backupDir.getAbsolutePath()+"/"+value);
+				}
+				return "executed";
+			}
+			@Override
+			protected void onPostExecute(String result) {
+				listFiles = list(backupDir.listFiles());
+				mAdapter = new BackupBaseAdapter(mContext, listFiles);
+				mList.setAdapter(mAdapter);
+				pd.dismiss();
+			}
+		}
+		new LongOperation().execute();
+	}
 
 }
