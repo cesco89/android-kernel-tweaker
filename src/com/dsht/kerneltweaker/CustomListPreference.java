@@ -77,10 +77,6 @@ public class CustomListPreference extends ListPreference implements OnCheckedCha
 		return this.category;
 	}
 
-	public boolean getCheckBoxState() {
-		return this.checkboxState;
-	}
-
 	public void setBootChecked(boolean checked) {
 		ischecked = checked;
 	}
@@ -90,7 +86,7 @@ public class CustomListPreference extends ListPreference implements OnCheckedCha
 	}
 	
 	public boolean isBootChecked() {
-		return ischecked;
+		return this.ischecked;
 	}
 
 
@@ -115,6 +111,7 @@ public class CustomListPreference extends ListPreference implements OnCheckedCha
 		cb.setOnCheckedChangeListener(this);
 		separator = (View) view.findViewById(R.id.separator);
 		hideBootViews(hide);
+		ischecked = mPrefs.getBoolean(this.getTitle().toString(), false);
 	}
 
 	public void updateDb( final Preference p, final String value,final boolean isChecked) {

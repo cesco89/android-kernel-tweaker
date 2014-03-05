@@ -15,6 +15,7 @@ import com.dsht.kerneltweaker.SwipeDismissListViewTouchListener;
 import com.dsht.kerneltweaker.database.DataItem;
 import com.dsht.kerneltweaker.database.DatabaseHandler;
 import com.dsht.kerneltweaker.database.VddDatabaseHandler;
+import com.dsht.kernetweaker.cmdprocessor.CMDProcessor;
 import com.dsht.settings.SettingsFragment;
 import com.stericson.RootTools.RootTools;
 import com.stericson.RootTools.exceptions.RootDeniedException;
@@ -73,7 +74,7 @@ public class ReviewBootPreferenceFragment extends PreferenceFragment {
 	private static final String SchedCat ="scheduler";
 	private static final String QuietCat ="cpuquiet";
 	private static final String vmCat = "vm";
-	
+
 	private ListView listView;
 	private SwipeDismissListViewTouchListener touchListener;
 	private MenuItem edit;
@@ -112,13 +113,13 @@ public class ReviewBootPreferenceFragment extends PreferenceFragment {
 		mQuiet = (PreferenceCategory) findPreference("cat_quiet");
 		mVm= (PreferenceCategory) findPreference("cat_vm");
 		setHasOptionsMenu(true);
-		
+
 		Helpers.setPermissions(CPUQUIET_FILE);
 		Helpers.setPermissions(GPU_FREQUENCIES_FILE);
 		Helpers.setPermissions(READ_AHEAD_FILE);
 		Helpers.setPermissions(CPUQUIET_DIR);
 		Helpers.setPermissions(CPUQUIET_GOVERNORS);
-		
+
 		frequencies = Helpers.getFrequencies();
 		names = Helpers.getFrequenciesNames();
 		governors = Helpers.getGovernors();
@@ -130,12 +131,12 @@ public class ReviewBootPreferenceFragment extends PreferenceFragment {
 		VddDb = new VddDatabaseHandler(mContext);
 		items = db.getAllItems();
 		vddItems = VddDb.getAllItems();
-		
+
 		if(new File(CPUQUIET_DIR).exists()) {
 			String cpuquiet = Helpers.getFileContent(new File(CPUQUIET_GOVERNORS));
 			cpuquiet_govs = cpuquiet.trim().replaceAll("\n", "").split(" ");
 		}
-		
+
 		if(items.size() != 0) {
 			for(DataItem item : items) {
 				String fPath = item.getName().replaceAll("'", "");
@@ -205,7 +206,7 @@ public class ReviewBootPreferenceFragment extends PreferenceFragment {
 					String color = getColor(7);
 					createPreference(mVm,fPath, fName, value, color, category, false);
 				}
-				
+
 			}
 		} 
 
@@ -244,7 +245,7 @@ public class ReviewBootPreferenceFragment extends PreferenceFragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		super.onCreateView(inflater, container, savedInstanceState);
 		View v = inflater.inflate(R.layout.layout_list, container,false);
-		
+
 		listView = (ListView) v.findViewById(android.R.id.list);
 		listView.setFastScrollEnabled(true);
 		listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
@@ -264,8 +265,8 @@ public class ReviewBootPreferenceFragment extends PreferenceFragment {
 				db,
 				VddDb,
 				true));
-		
-		
+
+
 		return v;
 	}
 
@@ -306,20 +307,8 @@ public class ReviewBootPreferenceFragment extends PreferenceFragment {
 							String value = et.getText().toString();
 							p.setSummary(value);
 							Log.d("TEST", "echo "+value+" > "+ p.getKey());
-							CommandCapture command = new CommandCapture(0,"echo \""+value+"\" > "+p.getKey());
-							try {
-								RootTools.getShell(true).add(command);
-								updateDb(p, value, true, category);
-							} catch (IOException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							} catch (TimeoutException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							} catch (RootDeniedException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							}
+							CMDProcessor.runSuCommand("echo \""+value+"\" > "+p.getKey());
+							updateDb(p, value, true, category);
 						}
 					} );
 					AlertDialog dialog = builder.create();
@@ -363,21 +352,8 @@ public class ReviewBootPreferenceFragment extends PreferenceFragment {
 					// TODO Auto-generated method stub
 					p.setSummary((String)newValue);
 					pref.setValue(p.getSummary().toString());
-					Log.d("TEST", "echo "+(String)newValue+" > "+ p.getKey());
-					CommandCapture command = new CommandCapture(0,"echo \""+(String)newValue+"\" > "+p.getKey());
-					try {
-						RootTools.getShell(true).add(command);
-						updateDb(p, (String)newValue, true, category);
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (TimeoutException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (RootDeniedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+					CMDProcessor.runSuCommand("echo \""+(String)newValue+"\" > "+p.getKey());
+					updateDb(p, (String)newValue, true, category);
 					return true;
 				}
 

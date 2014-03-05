@@ -164,6 +164,7 @@ public class CustomPreference extends Preference implements OnCheckedChangeListe
 		separator = (View) view.findViewById(R.id.separator);
 		
 		hideBootViews(hide);
+		checked = mPrefs.getBoolean(this.getTitle().toString(), false);
 	}
 
 

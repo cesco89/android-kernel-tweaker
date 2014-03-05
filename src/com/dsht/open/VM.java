@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
@@ -28,12 +29,15 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import java.io.File;
+import java.util.List;
 
 import com.dsht.kerneltweaker.CustomPreference;
 import com.dsht.kerneltweaker.Helpers;
 import com.dsht.kerneltweaker.ListViewMultiChoiceModeListener;
 import com.dsht.kerneltweaker.MainActivity;
 import com.dsht.kerneltweaker.R;
+import com.dsht.kerneltweaker.database.DataItem;
+import com.dsht.kerneltweaker.database.DatabaseHandler;
 import com.dsht.kernetweaker.cmdprocessor.CMDProcessor;
 import com.dsht.settings.SettingsFragment;
 
@@ -48,6 +52,7 @@ public class VM extends PreferenceFragment implements SharedPreferences.OnShared
     private CustomPreference mSwappiness;
     private PreferenceScreen mRootScreen;
     private CustomPreference mVfs;
+    private DatabaseHandler db;
     String category = "vm";
     
 
@@ -65,6 +70,7 @@ public class VM extends PreferenceFragment implements SharedPreferences.OnShared
         mPreferences = PreferenceManager.getDefaultSharedPreferences(context);
         mPreferences.registerOnSharedPreferenceChangeListener(this);
         addPreferencesFromResource(R.xml.vm);
+        db = new DatabaseHandler(context);
         
         mRootScreen = (PreferenceScreen) findPreference("key_root");
         mDirtyRatio = (CustomPreference) findPreference(PREF_DIRTY_RATIO);
@@ -340,12 +346,45 @@ public class VM extends PreferenceFragment implements SharedPreferences.OnShared
                         } else {
                             CMDProcessor.runSuCommand("busybox echo " + newProgress + " > " + path);
                         }
+                        updateListDb(pref, Integer.toString(newProgress), ((CustomPreference)pref).isBootChecked());
                         final SharedPreferences.Editor editor = mPreferences.edit();
                         editor.putInt(key, newProgress);
                         editor.commit();
                     }
                 }).create().show();
     }
+    
+    
+	private void updateListDb(final Preference p, final String value, final boolean isChecked) {
+
+		class LongOperation extends AsyncTask<String, Void, String> {
+
+			@Override
+			protected String doInBackground(String... params) {
+
+				if(isChecked) {
+					List<DataItem> items = db.getAllItems();
+					for(DataItem item : items) {
+						if(item.getName().equals("'"+p.getKey()+"'")) {
+							db.deleteItemByName("'"+p.getKey()+"'");
+						}
+					}
+					db.addItem(new DataItem("'"+p.getKey()+"'", value, p.getTitle().toString(), category));
+				} else {
+					if(db.getContactsCount() != 0) {
+						db.deleteItemByName("'"+p.getKey()+"'");
+					}
+				}
+
+				return "Executed";
+			}
+			@Override
+			protected void onPostExecute(String result) {
+
+			}
+		}
+		new LongOperation().execute();
+	}
 }
 
 

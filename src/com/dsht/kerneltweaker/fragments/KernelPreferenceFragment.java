@@ -240,24 +240,18 @@ public class KernelPreferenceFragment extends PreferenceFragment implements OnPr
 
 			@Override
 			public boolean onPreferenceChange(Preference preference, Object newValue) {
-				CommandCapture command = null;
+				String cmd = null;
+				String value = null;
 				if (newValue.toString().equals("true")) {
-					command = new CommandCapture(0,"echo Y > "+FSYNC_FILE);
+					cmd = "echo Y > "+FSYNC_FILE;
+					value = "Y";
 				} else {
-					command = new CommandCapture(0,"echo N > "+FSYNC_FILE);
+					cmd = "echo N > "+FSYNC_FILE;
+					value = "N";
 				}
-				try {
-					RootTools.getShell(true).add(command);
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (TimeoutException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (RootDeniedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				CMDProcessor.runSuCommand(cmd);
+				updateDb(preference, value, ((CustomCheckBoxPreference) preference).isBootChecked());
+				
 				return true;
 			}
 		});
@@ -266,24 +260,17 @@ public class KernelPreferenceFragment extends PreferenceFragment implements OnPr
 
 			@Override
 			public boolean onPreferenceChange(Preference preference, Object newValue) {
-				CommandCapture command = null;
+				String cmd = null;
+				String value = null;
 				if (newValue.toString().equals("true")) {
-					command = new CommandCapture(0,"echo 1 > "+DYNFSYNC_FILE);
+					cmd = "echo 1 > "+DYNFSYNC_FILE;
+					value = "1";
 				} else {
-					command = new CommandCapture(0,"echo 0 > "+DYNFSYNC_FILE);
+					cmd = "echo 0 > "+DYNFSYNC_FILE;
+					value = "0";
 				}
-				try {
-					RootTools.getShell(true).add(command);
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (TimeoutException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (RootDeniedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				CMDProcessor.runSuCommand(cmd);
+				updateDb(preference, value, ((CustomCheckBoxPreference) preference).isBootChecked());
 				return true;
 			}
 		});
@@ -292,24 +279,17 @@ public class KernelPreferenceFragment extends PreferenceFragment implements OnPr
 
 			@Override
 			public boolean onPreferenceChange(Preference preference, Object newValue) {
-				CommandCapture command = null;
+				String cmd = null;
+				String value = null;
 				if (newValue.toString().equals("true")) {
-					command = new CommandCapture(0,"echo 1 > "+DT2W_FILE);
+					cmd = "echo 1 > "+DT2W_FILE;
+					value = "1";
 				} else {
-					command = new CommandCapture(0,"echo 0 > "+DT2W_FILE);
+					cmd = "echo 0 > "+DT2W_FILE;
+					value = "0";
 				}
-				try {
-					RootTools.getShell(true).add(command);
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (TimeoutException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (RootDeniedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				CMDProcessor.runSuCommand(cmd);
+				updateDb(preference, value, ((CustomCheckBoxPreference) preference).isBootChecked());
 				return true;
 			}
 		});
@@ -318,24 +298,17 @@ public class KernelPreferenceFragment extends PreferenceFragment implements OnPr
 
 			@Override
 			public boolean onPreferenceChange(Preference preference, Object newValue) {
-				CommandCapture command = null;
+				String cmd = null;
+				String value = null;
 				if (newValue.toString().equals("true")) {
-					command = new CommandCapture(0,"echo 1 > "+S2W_FILE);
+					cmd = "echo 1 > "+S2W_FILE;
+					value = "1";
 				} else {
-					command = new CommandCapture(0,"echo 0 > "+S2W_FILE);
+					cmd = "echo 0 > "+S2W_FILE;
+					value = "0";
 				}
-				try {
-					RootTools.getShell(true).add(command);
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (TimeoutException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (RootDeniedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				CMDProcessor.runSuCommand(cmd);
+				updateDb(preference, value, ((CustomCheckBoxPreference) preference).isBootChecked());
 				return true;
 			}
 		});
@@ -344,24 +317,17 @@ public class KernelPreferenceFragment extends PreferenceFragment implements OnPr
 
 			@Override
 			public boolean onPreferenceChange(Preference preference, Object newValue) {
-				CommandCapture command = null;
+				String cmd = null;
+				String value = null;
 				if (newValue.toString().equals("true")) {
-					command = new CommandCapture(0,"echo 1 > "+S2W_SLEEPONLY_FILE);
+					cmd = "echo 1 > "+S2W_SLEEPONLY_FILE;
+					value ="1";
 				} else {
-					command = new CommandCapture(0,"echo 0 > "+S2W_SLEEPONLY_FILE);
+					cmd = "echo 0 > "+S2W_SLEEPONLY_FILE;
+					value = "0";
 				}
-				try {
-					RootTools.getShell(true).add(command);
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (TimeoutException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (RootDeniedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				CMDProcessor.runSuCommand(cmd);
+				updateDb(preference, value, ((CustomCheckBoxPreference) preference).isBootChecked());
 				return true;
 			}
 		});
@@ -371,24 +337,17 @@ public class KernelPreferenceFragment extends PreferenceFragment implements OnPr
 
 			@Override
 			public boolean onPreferenceChange(Preference preference, Object newValue) {
-				CommandCapture command = null;
+				String cmd = null;
+				String value = null;
 				if (newValue.toString().equals("true")) {
-					command = new CommandCapture(0,"echo 1 > "+F2S_FILE);
+					cmd = "echo 1 > "+F2S_FILE;
+					value = "1";
 				} else {
-					command = new CommandCapture(0,"echo 0 > "+F2S_FILE);
+					cmd = "echo 0 > "+F2S_FILE;
+					value = "0";
 				}
-				try {
-					RootTools.getShell(true).add(command);
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (TimeoutException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (RootDeniedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				CMDProcessor.runSuCommand(cmd);
+				updateDb(preference, value, ((CustomCheckBoxPreference) preference).isBootChecked());
 				return true;
 			}
 		});
@@ -397,24 +356,17 @@ public class KernelPreferenceFragment extends PreferenceFragment implements OnPr
 
 			@Override
 			public boolean onPreferenceChange(Preference preference, Object newValue) {
-				CommandCapture command = null;
+				String cmd = null;
+				String value = null;
 				if (newValue.toString().equals("true")) {
-					command = new CommandCapture(0,"echo 1 > "+F2W_FILE);
+					cmd = "echo 1 > "+F2W_FILE;
+					value = "1";
 				} else {
-					command = new CommandCapture(0,"echo 0 > "+F2W_FILE);
+					cmd = "echo 0 > "+F2W_FILE;
+					value = "0";
 				}
-				try {
-					RootTools.getShell(true).add(command);
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (TimeoutException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (RootDeniedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				CMDProcessor.runSuCommand(cmd);
+				updateDb(preference, value, ((CustomCheckBoxPreference) preference).isBootChecked());
 				return true;
 			}
 		});
@@ -423,24 +375,17 @@ public class KernelPreferenceFragment extends PreferenceFragment implements OnPr
 
 			@Override
 			public boolean onPreferenceChange(Preference preference, Object newValue) {
-				CommandCapture command = null;
+				String cmd = null;
+				String value = null;
 				if (newValue.toString().equals("true")) {
-					command = new CommandCapture(0,"echo 1 > "+INTELLIPLUG_FILE);
+					cmd = "echo 1 > "+INTELLIPLUG_FILE;
+					value = "1";
 				} else {
-					command = new CommandCapture(0,"echo 0 > "+INTELLIPLUG_FILE);
+					cmd = "echo 0 > "+INTELLIPLUG_FILE;
+					value = "0";
 				}
-				try {
-					RootTools.getShell(true).add(command);
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (TimeoutException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (RootDeniedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				CMDProcessor.runSuCommand(cmd);
+				updateDb(preference, value, ((CustomCheckBoxPreference) preference).isBootChecked());
 				return true;
 			}
 		});
@@ -450,24 +395,17 @@ public class KernelPreferenceFragment extends PreferenceFragment implements OnPr
 			@Override
 			public boolean onPreferenceChange(Preference preference, Object newValue) {
 				SharedPreferences.Editor editor = mPrefs.edit();
-				CommandCapture command = null;
+				String cmd = null;
+				String value = null;
 				if (newValue.toString().equals("true")) {
-					command = new CommandCapture(0,"echo 1 > "+ECOMODE_FILE);
+					cmd = "echo 1 > "+ECOMODE_FILE;
+					value = "1";
 				} else {
-					command = new CommandCapture(0,"echo 0 > "+ECOMODE_FILE);
+					cmd = "echo 0 > "+ECOMODE_FILE;
+					value = "0";
 				}
-				try {
-					RootTools.getShell(true).add(command);
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (TimeoutException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (RootDeniedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				CMDProcessor.runSuCommand(cmd);
+				updateDb(preference, value, ((CustomCheckBoxPreference) preference).isBootChecked());
 				editor.commit();
 				return true;
 			}
@@ -477,24 +415,17 @@ public class KernelPreferenceFragment extends PreferenceFragment implements OnPr
 
 			@Override
 			public boolean onPreferenceChange(Preference preference, Object newValue) {
-				CommandCapture command = null;
+				String cmd = null;
+				String value = null;
 				if (newValue.toString().equals("true")) {
-					command = new CommandCapture(0,"echo 1 > "+FCHARGE_FILE);
+					cmd = "echo 1 > "+FCHARGE_FILE;
+					value = "1";
 				} else {
-					command = new CommandCapture(0,"echo 0 > "+FCHARGE_FILE);
+					cmd = "echo 0 > "+FCHARGE_FILE;
+					value = "0";
 				}
-				try {
-					RootTools.getShell(true).add(command);
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (TimeoutException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (RootDeniedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				CMDProcessor.runSuCommand(cmd);
+				updateDb(preference, value, ((CustomCheckBoxPreference) preference).isBootChecked());
 				return true;
 			}
 		});
@@ -706,17 +637,7 @@ public class KernelPreferenceFragment extends PreferenceFragment implements OnPr
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		super.onCreateView(inflater, container, savedInstanceState);
 		View v = inflater.inflate(R.layout.layout_list, container,false);
-		ListView listView = (ListView) v.findViewById(android.R.id.list);
 
-/*		listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
-		registerForContextMenu(listView);
-		listView.setMultiChoiceModeListener(new ListViewMultiChoiceModeListener(
-				mContext,getActivity(),
-				listView,mRootScreen,
-				false,
-				db,
-				MainActivity.vddDb));
-*/
 		return v;
 	}
 
@@ -727,39 +648,15 @@ public class KernelPreferenceFragment extends PreferenceFragment implements OnPr
 			String value = (String) newValue;
 			mCpuScheduler.setSummary(value);
 			mCpuScheduler.setValue(value);
-			CommandCapture command = new CommandCapture(0,"echo "+value+" > "+SCHEDULER_FILE);
-			try {
-				RootTools.getShell(true).add(command);
-				updateDb(pref, value, ((CustomListPreference) pref).isBootChecked());
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (TimeoutException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (RootDeniedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			CMDProcessor.runSuCommand("echo "+value+" > "+SCHEDULER_FILE);
+			updateDb(pref, value, ((CustomListPreference) pref).isBootChecked());
 		}
 		if(pref == mCpuReadAhead) {
 			String value = (String) newValue;
 			mCpuReadAhead.setSummary(value);
 			mCpuReadAhead.setValue(value);
+			CMDProcessor.runSuCommand("echo "+value+" > "+READ_AHEAD_FILE);
 			updateDb(pref, value, ((CustomListPreference) pref).isBootChecked());
-			CommandCapture command = new CommandCapture(0,"echo "+value+" > "+READ_AHEAD_FILE);
-			try {
-				RootTools.getShell(true).add(command);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (TimeoutException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (RootDeniedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 		}
 		return true;
 	}
@@ -794,20 +691,8 @@ public class KernelPreferenceFragment extends PreferenceFragment implements OnPr
 					// TODO Auto-generated method stub
 					String value = et.getText().toString();
 					pref.setSummary(value);
-					CommandCapture command = new CommandCapture(0,"echo \""+value+"\" > "+pref.getKey());
-					try {
-						RootTools.getShell(true).add(command);
-						updateDb(pref, value, ((CustomPreference) pref).isBootChecked());
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (TimeoutException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (RootDeniedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+					CMDProcessor.runSuCommand("echo \""+value+"\" > "+pref.getKey());
+					updateDb(pref, value, ((CustomPreference) pref).isBootChecked());
 				}
 			} );
 			AlertDialog dialog = builder.create();
@@ -856,20 +741,8 @@ public class KernelPreferenceFragment extends PreferenceFragment implements OnPr
 						String value = et.getText().toString();
 						p.setSummary(value);
 						Log.d("TEST", "echo \""+value+"\" > "+ p.getKey());
-						CommandCapture command = new CommandCapture(0,"echo \""+value+"\" > "+p.getKey());
-						try {
-							RootTools.getShell(true).add(command);
-							updateDb(p, value, pref.isBootChecked());
-						} catch (IOException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						} catch (TimeoutException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						} catch (RootDeniedException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
+						CMDProcessor.runSuCommand("echo \""+value+"\" > "+p.getKey());
+						updateDb(p, value, pref.isBootChecked());
 					}
 				} );
 				AlertDialog dialog = builder.create();
@@ -905,31 +778,6 @@ public class KernelPreferenceFragment extends PreferenceFragment implements OnPr
 						db.deleteItemByName("'"+p.getKey()+"'");
 					}
 				}
-
-				return "Executed";
-			}
-			@Override
-			protected void onPostExecute(String result) {
-
-			}
-		}
-		new LongOperation().execute();
-	}
-	
-	private void updateListDb(final Preference p, final String value) {
-
-		class LongOperation extends AsyncTask<String, Void, String> {
-
-			@Override
-			protected String doInBackground(String... params) {
-
-				List<DataItem> items = db.getAllItems();
-				for(DataItem item : items) {
-					if(item.getName().equals("'"+p.getKey()+"'")) {
-						db.deleteItemByName("'"+p.getKey()+"'");
-					}
-				}
-				db.addItem(new DataItem("'"+p.getKey()+"'", value, p.getTitle().toString(), category));
 
 				return "Executed";
 			}

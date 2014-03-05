@@ -8,6 +8,7 @@ import java.util.concurrent.TimeoutException;
 import com.dsht.kerneltweaker.FileBaseAdapter;
 import com.dsht.kerneltweaker.MainActivity;
 import com.dsht.kerneltweaker.R;
+import com.dsht.kernetweaker.cmdprocessor.CMDProcessor;
 import com.stericson.RootTools.RootTools;
 import com.stericson.RootTools.exceptions.RootDeniedException;
 import com.stericson.RootTools.execution.CommandCapture;
@@ -153,51 +154,18 @@ public class FileManagerFragment extends Fragment implements OnItemClickListener
 		if(COMMAND_FILE.exists()) {
 			COMMAND_FILE.delete();
 		}
-		CommandCapture cmd = new CommandCapture(0,"echo "+command+" > "+COMMAND_FILE.getAbsolutePath(), "reboot recovery");
-		try {
-			RootTools.getShell(true).add(cmd);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (TimeoutException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (RootDeniedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		CMDProcessor.runSuCommand("echo "+command+" > "+COMMAND_FILE.getAbsolutePath());
+		CMDProcessor.runSuCommand("reboot recovery");
 	}
 	
 	public void installBoot(String bootPath) {
-		CommandCapture cmd = new CommandCapture(0,"dd if="+bootPath+" of=/dev/block/platform/msm_sdcc.1/by-name/boot", "reboot");
-		try {
-			RootTools.getShell(true).add(cmd);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (TimeoutException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (RootDeniedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		CMDProcessor.runSuCommand("dd if="+bootPath+" of=/dev/block/platform/msm_sdcc.1/by-name/boot");
+		CMDProcessor.runSuCommand("reboot");
 	}
 	
 	public void installRecovery(String recoveryPath) {
-		CommandCapture cmd = new CommandCapture(0,"dd if="+recoveryPath+" of=/dev/block/platform/msm_sdcc.1/by-name/recovery", "reboot");
-		try {
-			RootTools.getShell(true).add(cmd);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (TimeoutException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (RootDeniedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		CMDProcessor.runSuCommand("dd if="+recoveryPath+" of=/dev/block/platform/msm_sdcc.1/by-name/recovery");
+		CMDProcessor.runSuCommand("reboot");
 	}
 
 }

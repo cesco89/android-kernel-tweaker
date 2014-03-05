@@ -38,6 +38,7 @@ import com.dsht.kerneltweaker.R;
 import com.dsht.kerneltweaker.database.DataItem;
 import com.dsht.kerneltweaker.database.DatabaseHandler;
 import com.dsht.kerneltweaker.database.VddDatabaseHandler;
+import com.dsht.kernetweaker.cmdprocessor.CMDProcessor;
 import com.dsht.settings.SettingsFragment;
 import com.stericson.RootTools.RootTools;
 import com.stericson.RootTools.exceptions.RootDeniedException;
@@ -68,7 +69,7 @@ public class UvPreferenceFragment extends PreferenceFragment {
 		init();
 		items = db.getAllItems();
 		vddItems = VddDb.getAllItems();
-		
+
 		if(Helpers.UvTableExists(UV_TABLE_FILE)) {
 			if(mCategory.getPreferenceCount() != 0) {
 				mCategory.removeAll();
@@ -110,9 +111,9 @@ public class UvPreferenceFragment extends PreferenceFragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		super.onCreateView(inflater, container, savedInstanceState);
 		View v = inflater.inflate(R.layout.layout_list, container,false);
-		
+
 		final ListView list = (ListView) v.findViewById(android.R.id.list);
-		
+
 		mButtonLayout = (LinearLayout) v.findViewById(R.id.btn_layout);
 		mButtonApply = (Button) v.findViewById(R.id.btn_apply);
 		mButtonCancel = (Button) v.findViewById(R.id.btn_cancel);
@@ -154,26 +155,13 @@ public class UvPreferenceFragment extends PreferenceFragment {
 						values[i] = pref.getKey();
 
 					}
-					Log.d("newValues", buildTable(newValues));
-					CommandCapture command = new CommandCapture(0,"echo \""+buildTable(values)+"\" > "+UV_TABLE_FILE);
-					try {
-						RootTools.getShell(true).add(command);
-						if(boot.isChecked()) {
-							db.deleteItemByName("'"+UV_TABLE_FILE+"'");
-							db.addItem(new DataItem("'"+UV_TABLE_FILE+"'", 
-									buildTable(values), 
-									"UV Table",
-									category));
-						}
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (TimeoutException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (RootDeniedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
+					CMDProcessor.runSuCommand("echo \""+buildTable(values)+"\" > "+UV_TABLE_FILE);
+					if(boot.isChecked()) {
+						db.deleteItemByName("'"+UV_TABLE_FILE+"'");
+						db.addItem(new DataItem("'"+UV_TABLE_FILE+"'", 
+								buildTable(values), 
+								"UV Table",
+								category));
 					}
 				}
 				mButtonLayout.setVisibility(View.GONE);
@@ -332,44 +320,15 @@ public class UvPreferenceFragment extends PreferenceFragment {
 									// TODO Auto-generated method stub
 									if(isVdd) {
 										String value = "'"+p.getTitle().toString()+" "+et.getText().toString()+"'";
-										CommandCapture command = new CommandCapture(0,"echo "+value+" > "+UV_TABLE_FILE);
+										CMDProcessor.runSuCommand("echo "+value+" > "+UV_TABLE_FILE);
 										p.setSummary(et.getText().toString());
 										p.setKey(et.getText().toString());
-										try {
-											RootTools.getShell(true).add(command);
-
-										} catch (IOException e) {
-											// TODO Auto-generated catch block
-											e.printStackTrace();
-										} catch (TimeoutException e) {
-											// TODO Auto-generated catch block
-											e.printStackTrace();
-										} catch (RootDeniedException e) {
-											// TODO Auto-generated catch block
-											e.printStackTrace();
-										}
 									} else {
 										String value = et.getText().toString();
 										p.setSummary(value+" mV");
 										p.setKey(value);
 										values[j] = value;
-										Log.d("NEWTABLE", buildTable(values));
-										Log.d("COMMAND", "echo \""+buildTable(values)+"\" > "+UV_TABLE_FILE);
-
-										CommandCapture command = new CommandCapture(0,"echo \""+buildTable(values)+"\" > "+UV_TABLE_FILE);
-										try {
-											RootTools.getShell(true).add(command);
-
-										} catch (IOException e) {
-											// TODO Auto-generated catch block
-											e.printStackTrace();
-										} catch (TimeoutException e) {
-											// TODO Auto-generated catch block
-											e.printStackTrace();
-										} catch (RootDeniedException e) {
-											// TODO Auto-generated catch block
-											e.printStackTrace();
-										}
+										CMDProcessor.runSuCommand("echo \""+buildTable(values)+"\" > "+UV_TABLE_FILE);
 									}
 									if(boot.isChecked()) {
 										if(isVdd) {
@@ -437,21 +396,7 @@ public class UvPreferenceFragment extends PreferenceFragment {
 	}
 
 	private void applyVddUV(String value) {
-
-		CommandCapture command = new CommandCapture(0,"echo "+value+" > "+UV_TABLE_FILE);
-		try {
-			RootTools.getShell(true).add(command);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (TimeoutException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (RootDeniedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
+		CMDProcessor.runSuCommand("echo "+value+" > "+UV_TABLE_FILE);
 	}
 
 	private void addVddBoot() {

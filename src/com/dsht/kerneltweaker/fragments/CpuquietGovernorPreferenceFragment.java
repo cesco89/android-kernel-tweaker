@@ -12,6 +12,7 @@ import com.dsht.kerneltweaker.MainActivity;
 import com.dsht.kerneltweaker.R;
 import com.dsht.kerneltweaker.database.DataItem;
 import com.dsht.kerneltweaker.database.DatabaseHandler;
+import com.dsht.kernetweaker.cmdprocessor.CMDProcessor;
 import com.dsht.settings.SettingsFragment;
 import com.stericson.RootTools.RootTools;
 import com.stericson.RootTools.exceptions.RootDeniedException;
@@ -64,17 +65,7 @@ public class CpuquietGovernorPreferenceFragment extends PreferenceFragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		super.onCreateView(inflater, container, savedInstanceState);
 		View v = inflater.inflate(R.layout.layout_list, container,false);
-		ListView listView = (ListView) v.findViewById(android.R.id.list);
 
-/*		listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
-		registerForContextMenu(listView);
-		listView.setMultiChoiceModeListener(new ListViewMultiChoiceModeListener(
-				mContext,getActivity(),
-				listView,mRoot,
-				false,
-				MainActivity.db,
-				MainActivity.vddDb));
-*/
 		String curGov = Helpers.getFileContent(new File(CPUQUIET_FILE)).trim().replaceAll("\n", "");
 		if(curGov.equals("runnable")) {
 			curGov +="_threads"; 
@@ -151,21 +142,8 @@ public class CpuquietGovernorPreferenceFragment extends PreferenceFragment {
 										// TODO Auto-generated method stub
 										String value = et.getText().toString();
 										p.setSummary(value);
-										Log.d("TEST", "echo "+value+" > "+ p.getKey());
-										CommandCapture command = new CommandCapture(0,"echo "+value+" > "+p.getKey());
-										try {
-											RootTools.getShell(true).add(command);
-											updateListDb(p, value);
-										} catch (IOException e) {
-											// TODO Auto-generated catch block
-											e.printStackTrace();
-										} catch (TimeoutException e) {
-											// TODO Auto-generated catch block
-											e.printStackTrace();
-										} catch (RootDeniedException e) {
-											// TODO Auto-generated catch block
-											e.printStackTrace();
-										}
+										CMDProcessor.runSuCommand("echo "+value+" > "+p.getKey());
+										updateListDb(p, value, ((CustomPreference) p).isBootChecked());
 									}
 								} );
 								AlertDialog dialog = builder.create();
@@ -195,21 +173,27 @@ public class CpuquietGovernorPreferenceFragment extends PreferenceFragment {
 		new LongOperation().execute(); 
 	}
 
-	private static void updateListDb(final Preference p, final String value) {
+	private static void updateListDb(final Preference p, final String value, final boolean isChecked) {
 
 		class LongOperation extends AsyncTask<String, Void, String> {
 
 			@Override
 			protected String doInBackground(String... params) {
 
-				List<DataItem> items = db.getAllItems();
-				for(DataItem item : items) {
-					if(item.getName().equals("'"+p.getKey()+"'")) {
+				if(isChecked) {
+					List<DataItem> items = db.getAllItems();
+					for(DataItem item : items) {
+						if(item.getName().equals("'"+p.getKey()+"'")) {
+							db.deleteItemByName("'"+p.getKey()+"'");
+						}
+					}
+					db.addItem(new DataItem("'"+p.getKey()+"'", value, p.getTitle().toString(), category));
+				} else {
+					if(db.getContactsCount() != 0) {
 						db.deleteItemByName("'"+p.getKey()+"'");
 					}
-
 				}
-				db.addItem(new DataItem("'"+p.getKey()+"'", value, p.getTitle().toString(), category));
+
 				return "Executed";
 			}
 			@Override

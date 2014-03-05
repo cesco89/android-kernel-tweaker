@@ -8,11 +8,11 @@ import java.util.concurrent.TimeoutException;
 import com.dsht.kerneltweaker.CustomListPreference;
 import com.dsht.kerneltweaker.CustomPreference;
 import com.dsht.kerneltweaker.Helpers;
-import com.dsht.kerneltweaker.ListViewMultiChoiceModeListener;
 import com.dsht.kerneltweaker.MainActivity;
 import com.dsht.kerneltweaker.R;
 import com.dsht.kerneltweaker.database.DataItem;
 import com.dsht.kerneltweaker.database.DatabaseHandler;
+import com.dsht.kernetweaker.cmdprocessor.CMDProcessor;
 import com.dsht.settings.SettingsFragment;
 import com.stericson.RootTools.RootTools;
 import com.stericson.RootTools.exceptions.RootDeniedException;
@@ -41,7 +41,6 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager.LayoutParams;
 import android.widget.EditText;
-import android.widget.ListView;
 
 public class GpuPreferenceFragment extends PreferenceFragment implements OnPreferenceChangeListener {
 	private Context mContext;
@@ -99,6 +98,7 @@ public class GpuPreferenceFragment extends PreferenceFragment implements OnPrefe
 			mGpuFrequency.setEntries(gpuNames);
 			mGpuFrequency.setEntryValues(frequencies);
 			mGpuFrequency.setSummary(Helpers.getFileContent(new File(GPU_MAX_FREQ_FILE)));
+			mGpuFrequency.setValue(Helpers.getFileContent(new File(GPU_MAX_FREQ_FILE)));
 		} else {
 			mCategory.removePreference(mGpuFrequency);
 			CustomPreference pref = new CustomPreference(mContext, true, category);
@@ -118,17 +118,8 @@ public class GpuPreferenceFragment extends PreferenceFragment implements OnPrefe
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		super.onCreateView(inflater, container, savedInstanceState);
 		View v = inflater.inflate(R.layout.layout_list, container,false);
-		ListView listView = (ListView) v.findViewById(android.R.id.list);
+		v.findViewById(android.R.id.list);
 
-/*		listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
-		registerForContextMenu(listView);
-		listView.setMultiChoiceModeListener(new ListViewMultiChoiceModeListener(
-				mContext,getActivity(),
-				listView,mRoot,
-				false,
-				db,
-				MainActivity.vddDb));
-*/
 		return v;
 	}
 
@@ -140,20 +131,9 @@ public class GpuPreferenceFragment extends PreferenceFragment implements OnPrefe
 			String value = ((String) newValue).trim();
 			mGpuFrequency.setSummary(value);
 			mGpuFrequency.setValue(value);
-			CommandCapture command = new CommandCapture(0,"echo "+value+" > "+GPU_MAX_FREQ_FILE);
-			try {
-				RootTools.getShell(true).add(command);
-				updateListDb(pref, value);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (TimeoutException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (RootDeniedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			CMDProcessor.runSuCommand("echo "+value+" > "+GPU_MAX_FREQ_FILE);
+			updateListDb(pref, value, ((CustomListPreference) pref).isBootChecked());
+			Log.d("TAG",""+((CustomListPreference) pref).isBootChecked());
 		}
 		return false;
 	}
@@ -202,7 +182,7 @@ public class GpuPreferenceFragment extends PreferenceFragment implements OnPrefe
 				et.setText(val);
 				et.setRawInputType(InputType.TYPE_CLASS_NUMBER);
 				et.setGravity(Gravity.CENTER_HORIZONTAL);
-				List<DataItem> items = db.getAllItems();
+				db.getAllItems();
 				builder.setView(v);
 				builder.setPositiveButton("ok", new DialogInterface.OnClickListener() {
 
@@ -212,20 +192,8 @@ public class GpuPreferenceFragment extends PreferenceFragment implements OnPrefe
 						String value = et.getText().toString();
 						p.setSummary(value);
 						Log.d("TEST", "echo "+value+" > "+ p.getKey());
-						CommandCapture command = new CommandCapture(0,"echo "+value+" > "+p.getKey());
-						try {
-							RootTools.getShell(true).add(command);
-							updateDb(p, value, pref.getCheckBoxState());
-						} catch (IOException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						} catch (TimeoutException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						} catch (RootDeniedException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
+						CMDProcessor.runSuCommand("echo "+value+" > "+p.getKey());
+						updateDb(p, value, pref.isBootChecked());
 					}
 				} );
 				AlertDialog dialog = builder.create();
@@ -272,20 +240,26 @@ public class GpuPreferenceFragment extends PreferenceFragment implements OnPrefe
 		new LongOperation().execute();
 	}
 	
-	private void updateListDb(final Preference p, final String value) {
+	private void updateListDb(final Preference p, final String value, final boolean isChecked) {
 
 		class LongOperation extends AsyncTask<String, Void, String> {
 
 			@Override
 			protected String doInBackground(String... params) {
 
-				List<DataItem> items = db.getAllItems();
-				for(DataItem item : items) {
-					if(item.getName().equals("'"+p.getKey()+"'")) {
+				if(isChecked) {
+					List<DataItem> items = db.getAllItems();
+					for(DataItem item : items) {
+						if(item.getName().equals("'"+p.getKey()+"'")) {
+							db.deleteItemByName("'"+p.getKey()+"'");
+						}
+					}
+					db.addItem(new DataItem("'"+p.getKey()+"'", value, p.getTitle().toString(), category));
+				} else {
+					if(db.getContactsCount() != 0) {
 						db.deleteItemByName("'"+p.getKey()+"'");
 					}
 				}
-				db.addItem(new DataItem("'"+p.getKey()+"'", value, p.getTitle().toString(), category));
 
 				return "Executed";
 			}

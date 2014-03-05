@@ -31,7 +31,7 @@ public class InitD extends PreferenceFragment implements OnPreferenceChangeListe
 	private static final String KEY_CLEAR_DATA_CACHE = "clear_data_cache";
 	private static final String KEY_ENABLE_CRON = "enable_cron";
 	private static final String KEY_FILE_SYSTEM_SPEEDUPS = "file_system_speedups";
-	private static final String REMOUNT_CMD = "busybox mount -o %s,remount /dev/block/platform/msm_sdcc.1/by-name/system /system";
+	private static final String REMOUNT_CMD = "busybox mount -o %s,remount /dev/block/mmcblk0p1 /system";
 
 	private static final String[] KEYS = {
 		KEY_ZIPALIGN_APKS, //0

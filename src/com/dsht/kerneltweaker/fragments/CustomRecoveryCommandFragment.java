@@ -7,6 +7,7 @@ import java.util.concurrent.TimeoutException;
 import com.dsht.kerneltweaker.MainActivity;
 import com.dsht.kerneltweaker.R;
 import com.dsht.kerneltweaker.RecoveryBaseAdapter;
+import com.dsht.kernetweaker.cmdprocessor.CMDProcessor;
 import com.mobeta.android.dslv.DragSortController;
 import com.mobeta.android.dslv.DragSortListView;
 import com.stericson.RootTools.RootTools;
@@ -241,38 +242,12 @@ public class CustomRecoveryCommandFragment extends Fragment implements OnClickLi
 	private void buildFile() {
 		removeFile();
 		for(String str : values) {
-			CommandCapture command = new CommandCapture(0, "echo \"" + str + "\" >> "+ COMMAND_FILE);
-			try {
-				RootTools.getShell(true).add(command);
-
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (TimeoutException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (RootDeniedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			CMDProcessor.runSuCommand("echo \"" + str + "\" >> "+ COMMAND_FILE);
 		}
 	}
 
 	private void removeFile() {
-		CommandCapture command = new CommandCapture(0, "rm -f "+COMMAND_FILE);
-		try {
-			RootTools.getShell(true).add(command);
-
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (TimeoutException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (RootDeniedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		CMDProcessor.runSuCommand("rm -f "+COMMAND_FILE);
 	}
 
 	public void performFileSearch() {
@@ -301,20 +276,7 @@ public class CustomRecoveryCommandFragment extends Fragment implements OnClickLi
 	}
 
 	private void onRebootPressed() {
-		CommandCapture command = new CommandCapture(0, "reboot recovery");
-		try {
-			RootTools.getShell(true).add(command);
-
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (TimeoutException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (RootDeniedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		CMDProcessor.runSuCommand("reboot recovery");
 	}
 
 

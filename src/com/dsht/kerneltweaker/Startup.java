@@ -7,6 +7,7 @@ import java.util.concurrent.TimeoutException;
 import com.dsht.kerneltweaker.database.DataItem;
 import com.dsht.kerneltweaker.database.DatabaseHandler;
 import com.dsht.kerneltweaker.database.VddDatabaseHandler;
+import com.dsht.kernetweaker.cmdprocessor.CMDProcessor;
 import com.stericson.RootTools.RootTools;
 import com.stericson.RootTools.exceptions.RootDeniedException;
 import com.stericson.RootTools.execution.CommandCapture;
@@ -52,31 +53,19 @@ public class Startup extends BroadcastReceiver {
 
 				if(items.size() != 0) {
 					for(DataItem item : items) {
-						CommandCapture command = null;
+						String cmd = null;
 						if(item.getFileName().contains("TCP Congestion control")) {
-							command = new CommandCapture(0, item.getName().replaceAll("'", ""));
+							cmd = item.getName().replaceAll("'", "");
 							Helpers.debugger(mContext, "---TCP---");
 							Helpers.debugger(mContext,item.getName().replaceAll("'", "") );
 
 						}else {
 							String value = item.getValue();
 							String fPath = item.getName().replaceAll("'", "");
-							command = new CommandCapture(0, "echo \""+value+"\" > "+fPath);
+							cmd = "echo \""+value+"\" > "+fPath;
 							Helpers.debugger(mContext, item.getFileName());
 							Helpers.debugger(mContext, "echo \""+value+"\" > "+fPath);
 							Helpers.checkApply(mContext, item.getFileName(), value , fPath);
-						}
-						try {
-							RootTools.getShell(true).add(command);
-						} catch (IOException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						} catch (TimeoutException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						} catch (RootDeniedException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
 						}
 					}
 				}
@@ -85,21 +74,9 @@ public class Startup extends BroadcastReceiver {
 					for(DataItem item : vddItems) {
 						String path = item.getName().replaceAll("'", "");
 						String value = item.getValue().replaceAll("'", "");
-						CommandCapture command = new CommandCapture(0, "echo \""+value+"\" > "+path);
-						try {
-							RootTools.getShell(true).add(command);
-							Helpers.debugger(mContext, "echo \""+value+"\" > "+path);
-							Helpers.checkApply(mContext, item.getFileName(), value , path);
-						} catch (IOException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						} catch (TimeoutException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						} catch (RootDeniedException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
+						CMDProcessor.runSuCommand("echo \""+value+"\" > "+path);
+						Helpers.debugger(mContext, "echo \""+value+"\" > "+path);
+						Helpers.checkApply(mContext, item.getFileName(), value , path);
 					}
 				}
 				return "executed";

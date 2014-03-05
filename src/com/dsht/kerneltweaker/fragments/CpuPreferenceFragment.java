@@ -13,6 +13,7 @@ import com.dsht.kerneltweaker.MainActivity;
 import com.dsht.kerneltweaker.R;
 import com.dsht.kerneltweaker.database.DataItem;
 import com.dsht.kerneltweaker.database.DatabaseHandler;
+import com.dsht.kernetweaker.cmdprocessor.CMDProcessor;
 import com.dsht.settings.SettingsFragment;
 import com.stericson.RootTools.RootTools;
 import com.stericson.RootTools.exceptions.RootDeniedException;
@@ -197,17 +198,6 @@ public class CpuPreferenceFragment extends PreferenceFragment implements OnPrefe
 		super.onCreateView(inflater, container, savedInstanceState);
 		View v = inflater.inflate(R.layout.layout_list, container,false);
 		
-/*		ListView listView = (ListView) v.findViewById(android.R.id.list);
-
-		listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
-		registerForContextMenu(listView);
-		listView.setMultiChoiceModeListener(new ListViewMultiChoiceModeListener(
-				mContext,getActivity(),
-				listView,mRoot,
-				false,
-				db,
-				MainActivity.vddDb));
-*/
 		return v;
 	}
 
@@ -220,78 +210,30 @@ public class CpuPreferenceFragment extends PreferenceFragment implements OnPrefe
 			String value = (String) newValue;
 			mCpuMaxFreq.setSummary(value);
 			mCpuMaxFreq.setValue(value);
-			CommandCapture command = new CommandCapture(0,"echo "+value+" > "+MAX_FREQ_FILE);
-			try {
-				RootTools.getShell(true).add(command);
-				updateListDb(pref, value);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (TimeoutException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (RootDeniedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			CMDProcessor.runSuCommand("echo "+value+" > "+MAX_FREQ_FILE);
+			updateListDb(pref, value, ((CustomListPreference) pref).isBootChecked());
 		}
 		if(pref == mCpuMinFreq) {
 			String value = (String) newValue;
 			mCpuMinFreq.setSummary(value);
 			mCpuMinFreq.setValue(value);
-			CommandCapture command = new CommandCapture(0,"echo "+value+" > "+MIN_FREQ_FILE);
-			try {
-				RootTools.getShell(true).add(command);
-				updateListDb(pref, value);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (TimeoutException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (RootDeniedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			CMDProcessor.runSuCommand("echo "+value+" > "+MIN_FREQ_FILE);
+			updateListDb(pref, value,((CustomListPreference) pref).isBootChecked());
 		}
 		if(pref == mCpuGovernor) {
 			String value = ((String)newValue).trim().replaceAll(" ", "").replaceAll("\n", "");
 			mCpuGovernor.setSummary(value);
 			mCpuGovernor.setValue(value);
-			CommandCapture command = new CommandCapture(0,"echo "+value+" > "+GOVERNOR_FILE);
-			try {
-				RootTools.getShell(true).add(command);
-				updateListDb(pref, value);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (TimeoutException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (RootDeniedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			CMDProcessor.runSuCommand("echo "+value+" > "+GOVERNOR_FILE);
+			updateListDb(pref, value, ((CustomListPreference) pref).isBootChecked());
 
 		}
 		if(pref == mCpuquiet) {
 			String value = (String) newValue;
 			mCpuquiet.setSummary(value);
 			mCpuquiet.setValue(value);
-			CommandCapture command = new CommandCapture(0,"echo "+value+" > "+CPUQUIET_FILE);
-			try {
-				RootTools.getShell(true).add(command);
-				updateListDb(pref, value);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (TimeoutException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (RootDeniedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			CMDProcessor.runSuCommand("echo "+value+" > "+CPUQUIET_FILE);
+			updateListDb(pref, value, ((CustomListPreference) pref).isBootChecked());
 		}
 		return false;
 	}
@@ -351,20 +293,8 @@ public class CpuPreferenceFragment extends PreferenceFragment implements OnPrefe
 						String value = et.getText().toString();
 						p.setSummary(value);
 						Log.d("TEST", "echo "+value+" > "+ p.getKey());
-						CommandCapture command = new CommandCapture(0,"echo "+value+" > "+p.getKey());
-						try {
-							RootTools.getShell(true).add(command);
-							updateListDb(pref, value);
-						} catch (IOException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						} catch (TimeoutException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						} catch (RootDeniedException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
+						CMDProcessor.runSuCommand("echo "+value+" > "+p.getKey());
+						updateListDb(pref, value, pref.isBootChecked());
 					}
 				} );
 				AlertDialog dialog = builder.create();
@@ -378,21 +308,27 @@ public class CpuPreferenceFragment extends PreferenceFragment implements OnPrefe
 		});
 	}
 
-	private void updateListDb(final Preference p, final String value) {
+	private void updateListDb(final Preference p, final String value, final boolean isChecked) {
 
 		class LongOperation extends AsyncTask<String, Void, String> {
 
 			@Override
 			protected String doInBackground(String... params) {
 
-				List<DataItem> items = db.getAllItems();
-				for(DataItem item : items) {
-					if(item.getName().equals("'"+p.getKey()+"'")) {
+				if(isChecked) {
+					List<DataItem> items = db.getAllItems();
+					for(DataItem item : items) {
+						if(item.getName().equals("'"+p.getKey()+"'")) {
+							db.deleteItemByName("'"+p.getKey()+"'");
+						}
+					}
+					db.addItem(new DataItem("'"+p.getKey()+"'", value, p.getTitle().toString(), category));
+				} else {
+					if(db.getContactsCount() != 0) {
 						db.deleteItemByName("'"+p.getKey()+"'");
 					}
-
 				}
-				db.addItem(new DataItem("'"+p.getKey()+"'", value, p.getTitle().toString(), category));
+
 				return "Executed";
 			}
 			@Override
@@ -402,8 +338,4 @@ public class CpuPreferenceFragment extends PreferenceFragment implements OnPrefe
 		}
 		new LongOperation().execute();
 	}
-
-
-
-
 }

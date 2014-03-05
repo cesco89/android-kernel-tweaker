@@ -29,6 +29,7 @@ import com.dsht.kerneltweaker.PresetsBaseAdapter;
 import com.dsht.kerneltweaker.R;
 import com.dsht.kerneltweaker.database.DataItem;
 import com.dsht.kerneltweaker.database.DatabaseHandler;
+import com.dsht.kernetweaker.cmdprocessor.CMDProcessor;
 import com.dsht.settings.SettingsFragment;
 import com.stericson.RootTools.RootTools;
 import com.stericson.RootTools.exceptions.RootDeniedException;
@@ -182,19 +183,7 @@ public class LowMemoryKillerFragment extends Fragment {
 				@Override
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
-					CommandCapture command = new CommandCapture(0, "echo \""+ summary.getText().toString() + "\" > "+ MINFREE_FILE );
-					try {
-						RootTools.getShell(true).add(command);
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (TimeoutException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (RootDeniedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+					CMDProcessor.runSuCommand("echo \""+ summary.getText().toString() + "\" > "+ MINFREE_FILE );
 					values = getMinFreeValues();
 					mAdapter = new CustomBaseAdapter(mContext, 
 							values, 

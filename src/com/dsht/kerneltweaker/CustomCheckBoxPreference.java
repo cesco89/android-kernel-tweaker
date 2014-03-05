@@ -117,6 +117,7 @@ public class CustomCheckBoxPreference extends CheckBoxPreference implements OnCh
 		cb.setOnCheckedChangeListener(this);
 		
 		separator = (View) view.findViewById(R.id.separator);
+		checked = mPrefs.getBoolean(this.getTitle().toString(), false);
 	}
 
 	public void updateDb( final Preference p, final String value,final boolean isChecked) {

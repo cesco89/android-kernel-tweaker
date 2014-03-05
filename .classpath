@@ -7,7 +7,7 @@
 	<classpathentry exported="true" kind="lib" path="/Users/francesco/sdk/extras/android/support/v4/android-support-v4.jar"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
 	<classpathentry exported="true" kind="lib" path="/Users/francesco/sdk/build-tools/android-4.4/renderscript/lib/renderscript-v8.jar"/>
-	<classpathentry exported="true" kind="lib" path="/Users/francesco/Documents/lib/RootTools-3.3.jar"/>
 	<classpathentry exported="true" kind="lib" path="/Users/francesco/Documents/lib/GoogleAnalyticsServicesAndroid_3.01/libGoogleAnalyticsServices.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/francesco/Documents/lib/RootTools-3.3.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
