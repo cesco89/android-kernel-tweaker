@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <color name="pressed_customapptheme">#CC00C36D</color>
     <color name="mca__holo_blue_light">#3333b5e5</color>
     <color name="mca__holo_blue_light_transparent">#7f33b5e5</color>
@@ -7,4 +8,10 @@
     <color name="mca__list_item_bg_normal">@android:color/transparent</color>
     <color name="mca__list_item_bg_checked">@color/mca__holo_blue_light</color>
     <color name="mca__list_item_bg_pressed">@color/holo_white_normal</color>
+    <color name="step_pager_previous_tab_color">#4433b5e5</color>
+    <color name="step_pager_selected_tab_color">#ff0099cc</color>
+    <color name="step_pager_selected_last_tab_color">#ff669900</color>
+    <color name="step_pager_next_tab_color">#10000000</color>
+    <color name="holo_blue">#FF33E5B5</color>
+
 </resources>

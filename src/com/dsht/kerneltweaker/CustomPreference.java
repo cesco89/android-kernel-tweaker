@@ -117,14 +117,6 @@ public class CustomPreference extends Preference implements OnCheckedChangeListe
 		this.excludeDialog = exclude;
 	}
 
-	public void setID(int id) {
-		this.ID = id;
-	}
-
-	public int getID() {
-		return this.ID;
-	}
-
 	public String getCategory() {
 		return this.category;
 	}

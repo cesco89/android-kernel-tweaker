@@ -1,16 +1,78 @@
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-        <Preference android:key="key_dsht"/>
-        <PreferenceCategory android:title="Developers">
-            <Preference android:key="key_cesco" android:title="Francesco Rigamonti" android:summary="Java code"/>
-            <Preference android:key="key_sollyx" android:title="Enrico Solazzo" android:summary="Graphics"/>
-        </PreferenceCategory>
-        <PreferenceCategory android:title="Open Source Projects">
-            <Preference android:summary="Some classes and xmls are based on the open source projects listed below."/>
-            <Preference android:key="key_aokp" android:title="AOKP"/>
-            <Preference android:key="key_omni" android:title="OMNI"/>
-            <Preference android:key="key_du" android:title="Dirty Unicorns"/>
-        </PreferenceCategory>
-        <PreferenceCategory android:title="Open Source Libraries">
-            <Preference android:key="key_slidingmenu" android:title="SlidingMenu" android:summary="Author: jfeinstein10"/>
-        </PreferenceCategory>
-    </PreferenceScreen>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" >
+    
+    <com.dsht.kerneltweaker.InfoPreference
+            android:key="key_logo"
+            android:title="DSHT"
+            app:image="@drawable/dsht_logo"
+            app:button1_text="@string/b1text"
+            app:button2_text="@string/b2dsht"
+            app:button3_text="@string/b3text"
+            app:button1_link="@string/dsht_gplus"
+            app:button2_link="@string/dsht_site"
+            app:button3_link="@string/dsht_donate" />
+
+    <Preference 
+        android:key="key_dsht" />
+
+    <PreferenceCategory android:title="Developers" >
+        <Preference
+            android:key="key_cesco"
+            android:summary="Java code"
+            android:title="Francesco Rigamonti" />
+        <Preference
+            android:key="key_sollyx"
+            android:summary="Graphics"
+            android:title="Enrico Solazzo" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="Open Source Projects" >
+        <Preference android:summary="Some classes and xmls are based on the open source projects listed below." />
+        <com.dsht.kerneltweaker.InfoPreference
+            android:key="key_du"
+            android:title="Dirty Unicorns"
+            app:image="@drawable/du"
+            app:button1_text="@string/b1text"
+            app:button2_text="@string/b2text"
+            app:button3_text="@string/b3text"
+            app:button1_link="@string/du_gplus"
+            app:button2_link="@string/du_github"
+            app:button3_link="@string/du_donate" />
+        <com.dsht.kerneltweaker.InfoPreference
+            android:key="key_aicp"
+            android:title="AICP"
+            app:image="@drawable/aicp"
+            app:button1_text="@string/b1text"
+            app:button2_text="@string/b2text"
+            app:button3_text="@string/b3text"
+            app:button1_link="@string/aicp_gplus"
+            app:button2_link="@string/aicp_github" 
+            app:button3_link="@string/aicp_donate"/>
+        <com.dsht.kerneltweaker.InfoPreference
+            android:key="key_aokp"
+            android:title="AOKP"
+            app:image="@drawable/aokp"
+            app:button1_text="@string/b1text"
+            app:button2_text="@string/b2text"
+            app:button3_text="@string/b3text"
+            app:button1_link="@string/aokp_gplus"
+            app:button2_link="@string/aokp_github"
+            app:button3_link="@string/aokp_donate" />
+        <com.dsht.kerneltweaker.InfoPreference
+            android:key="key_omni"
+            android:title="OMNI"
+            app:image="@drawable/omni"
+            app:button1_text="@string/b1text"
+            app:button2_text="@string/b2text"
+            app:button3_text="@string/b3text"
+            app:button1_link="@string/omni_gplus"
+            app:button2_link="@string/omni_github" />
+        
+    </PreferenceCategory>
+    <PreferenceCategory android:title="Open Source Libraries" >
+        <Preference
+            android:key="key_slidingmenu"
+            android:summary="Author: jfeinstein10"
+            android:title="SlidingMenu" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

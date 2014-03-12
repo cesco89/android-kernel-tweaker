@@ -2,6 +2,7 @@ package com.dsht.settings;
 
 import com.dsht.kerneltweaker.MainActivity;
 import com.dsht.kerneltweaker.R;
+import com.dsht.wizard.WizardActivity;
 
 import android.content.Intent;
 import android.content.pm.PackageInfo;
@@ -13,7 +14,9 @@ import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceFragment;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 public class infos extends PreferenceFragment implements OnPreferenceClickListener {
@@ -63,25 +66,31 @@ public class infos extends PreferenceFragment implements OnPreferenceClickListen
 		mCesco.setIcon(R.drawable.cesco);
 		mSollyx.setIcon(R.drawable.sollyx_google);
 
-		mAokp.setIcon(R.drawable.aokp);
+		/*	
+	    mAokp.setIcon(R.drawable.aokp);
 		mOmni.setIcon(R.drawable.omni);
-		mDu.setIcon(R.drawable.du);
+		mDu.setIcon(R.drawable.du); 
+		*/
 
 		mSlidingMenu.setIcon(R.drawable.github);
 
 		mDsht.setOnPreferenceClickListener(this);
 		mCesco.setOnPreferenceClickListener(this);
 		mSollyx.setOnPreferenceClickListener(this);
-		mAokp.setOnPreferenceClickListener(this);
-		mOmni.setOnPreferenceClickListener(this);
-		mDu.setOnPreferenceClickListener(this);
+		//mAokp.setOnPreferenceClickListener(this);
+		//mOmni.setOnPreferenceClickListener(this);
+		//mDu.setOnPreferenceClickListener(this);
 		mSlidingMenu.setOnPreferenceClickListener(this);
 
 		if(MainActivity.menu.isMenuShowing()) {
 			MainActivity.menu.toggle(true);
 		}
 	}
-
+/*
+ *
+ * WIP: First start wizard
+ *
+ *
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		super.onCreateView(inflater, container, savedInstanceState);
@@ -89,8 +98,19 @@ public class infos extends PreferenceFragment implements OnPreferenceClickListen
 		ListView listView = (ListView) v.findViewById(android.R.id.list);
 		View header = inflater.inflate(R.layout.header, null, false);
 		listView.addHeaderView(header);
+		ImageView logo = (ImageView) header.findViewById(R.id.imageView1);
+		logo.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				getActivity().startActivity(new Intent(getActivity(), WizardActivity.class));
+			}
+			
+		});
 		return v;
 	}
+ */
 
 	@Override
 	public boolean onPreferenceClick(Preference pref) {
@@ -105,6 +125,7 @@ public class infos extends PreferenceFragment implements OnPreferenceClickListen
 		if(pref == mSollyx) {
 			url = "https://plus.google.com/u/0/116757450567339042397/posts";
 		}
+		/*
 		if(pref == mAokp) {
 			url = "https://github.com/AOKP";
 		}
@@ -114,6 +135,7 @@ public class infos extends PreferenceFragment implements OnPreferenceClickListen
 		if(pref == mDu) {
 			url = "https://github.com/DirtyUnicorns-KitKat/";
 		}
+		*/
 		if(pref == mSlidingMenu) {
 			url = "https://github.com/jfeinstein10/slidingmenu";
 		}

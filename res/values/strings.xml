@@ -17,6 +17,47 @@
 
     ]]>
     </string>
+    
+    <string name="b1text">Google+</string>
+    <string name="b2text">Github</string>
+    <string name="b3text">Donate</string>
+    
+    <string name="aokp_gplus">https://plus.google.com/u/0/+AOKPco/posts</string>
+    <string name="aokp_github">https://github.com/AOKP</string>
+    <string name="aokp_donate">http://aokp.co/donate/</string>
+    
+    <string name="du_gplus">https://plus.google.com/u/0/communities/109738128866939227235</string>
+    <string name="du_github">https://github.com/DirtyUnicorns-KitKat/</string>
+    <string name="du_donate">http://forum.xda-developers.com/donatetome.php?u=1289361</string>
+   
+    <string name="omni_gplus">https://plus.google.com/u/0/+OmniromOrg/posts?hl=it</string>
+    <string name="omni_github">https://github.com/omnirom/</string>
+    
+    <string name="aicp_gplus">https://plus.google.com/u/0/communities/101008638920580274588?hl=it</string>
+    <string name="aicp_github">https://github.com/AICP</string>
+    <string name="aicp_donate">http://forum.xda-developers.com/donatetome.php?u=1184673</string>
+    
+    <string name="b2dsht">Site</string>
+    
+    <string name="dsht_gplus">https://plus.google.com/u/0/communities/101081078098156588800?hl=it</string>
+    <string name="dsht_site">http://www.dshtglobal.com/</string>
+    <string name="dsht_github">https://github.com/cesco89/android-kernel-tweaker</string>
+    <string name="dsht_donate">http://goo.gl/idSPM3</string>
+    
+    <string-array name="jazzy_effects">
+        <item>Standard</item>
+        <item>Tablet</item>
+        <item>CubeIn</item>
+        <item>CubeOut</item>
+        <item>FlipVertical</item>
+        <item>FlipHorizontal</item>
+        <item>Stack</item>
+        <item>ZoomIn</item>
+        <item>ZoomOut</item>
+        <item>RotateUp</item>
+        <item>RotateDown</item>
+        <item>Accordion</item>
+    </string-array>
 
     <string-array name="menu_entries">
         <item>--Device Info</item>

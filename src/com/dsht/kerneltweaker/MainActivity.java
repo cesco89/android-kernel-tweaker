@@ -7,6 +7,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.concurrent.TimeoutException;
 
 import com.dsht.glossary.CpuGlossaryFragment;
@@ -163,11 +164,8 @@ public class MainActivity extends FragmentActivity implements OnItemClickListene
 		FragmentTransaction ft = getFragmentManager().beginTransaction();
 		Fragment prefs = new TimeInState();
 		CpuGlossaryFragment glo = new CpuGlossaryFragment();
-		// This adds the newly created Preference fragment to my main layout, shown below
 		ft.replace(R.id.activity_container,prefs);
 		ft.replace(R.id.menu_frame, glo);
-		// By hiding the main fragment, transparency isn't an issue
-		//ft.addToBackStack(null);
 		ft.commit();
 
 		
@@ -220,6 +218,7 @@ public class MainActivity extends FragmentActivity implements OnItemClickListene
 
 		Fragment f = null;
 		Fragment glo = null;
+		
 		switch(arg2) {
 		case 1:
 			f = new TimeInState();
@@ -291,7 +290,7 @@ public class MainActivity extends FragmentActivity implements OnItemClickListene
 			//showCredits();
 			break;
 
-		}	
+		}
 		FragmentTransaction ft = getFragmentManager().beginTransaction();
 		// This adds the newly created Preference fragment to my main layout, shown below
 		ft.replace(R.id.activity_container,f);

@@ -1,16 +1,12 @@
 package com.dsht.kerneltweaker;
 
-import java.io.IOException;
+import java.util.Iterator;
 import java.util.List;
-import java.util.concurrent.TimeoutException;
 
 import com.dsht.kerneltweaker.database.DataItem;
 import com.dsht.kerneltweaker.database.DatabaseHandler;
 import com.dsht.kerneltweaker.database.VddDatabaseHandler;
 import com.dsht.kernetweaker.cmdprocessor.CMDProcessor;
-import com.stericson.RootTools.RootTools;
-import com.stericson.RootTools.exceptions.RootDeniedException;
-import com.stericson.RootTools.execution.CommandCapture;
 
 import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
@@ -52,21 +48,24 @@ public class Startup extends BroadcastReceiver {
 				List<DataItem> vddItems = vddDb.getAllItems();
 
 				if(items.size() != 0) {
+					
 					for(DataItem item : items) {
-						String cmd = null;
 						if(item.getFileName().contains("TCP Congestion control")) {
-							cmd = item.getName().replaceAll("'", "");
+							String cmd = item.getName().replaceAll("'", "");
+							CMDProcessor.runSuCommand(cmd);
 							Helpers.debugger(mContext, "---TCP---");
 							Helpers.debugger(mContext,item.getName().replaceAll("'", "") );
 
 						}else {
 							String value = item.getValue();
 							String fPath = item.getName().replaceAll("'", "");
-							cmd = "echo \""+value+"\" > "+fPath;
+							String cmd = "echo \""+value+"\" > "+fPath;
+							CMDProcessor.runSuCommand(cmd);
 							Helpers.debugger(mContext, item.getFileName());
 							Helpers.debugger(mContext, "echo \""+value+"\" > "+fPath);
 							Helpers.checkApply(mContext, item.getFileName(), value , fPath);
 						}
+						
 					}
 				}
 				if(vddItems.size() != 0 ) {
